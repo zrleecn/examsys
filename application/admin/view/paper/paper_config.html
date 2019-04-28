@@ -1,0 +1,657 @@
+{extend name="base/base" /}
+{block name="title"}标题{/block}
+
+{block name="left"}
+
+{include file="base/left_menu" /}
+
+{/block}
+
+
+{block name="main"}
+
+<!-- main content start-->
+<div class="main-content" style="overflow:hidden;">
+
+	<!-- header section start-->
+	<div class="header-section">
+
+		<!--toggle button start-->
+		<a class="toggle-btn"><i class="fa fa-bars"></i></a>
+		<!--toggle button end-->
+
+		<!--搜索开始-->
+		<form class="searchform" action="index.html" method="post">
+			<input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+		</form>
+		<!--搜索结束-->
+		<!--导航（通知）菜单开始notification menu start -->
+		<div class="menu-right">
+			<ul class="notification-menu">
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+						<i class="fa fa-tasks"></i>
+						<span class="badge">8</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-head pull-right">
+						<h5 class="title">你有8门需要考试的科目</h5>
+						<ul class="dropdown-list user-list">
+							<li class="new">
+								<a href="#">
+									<div class="task-info">
+										<div>JavaEE企业级开发考试</div>
+									</div>
+								</a>
+							</li>
+							<li class="new">
+								<a href="#">
+									<div class="task-info">
+										<div>大学英语4</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="task-info">
+										<div>高等数学</div>
+									</div>
+								</a>
+							</li>
+
+
+							<li class="new"><a href="">查看所有考试</a></li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+						<i class="fa fa-envelope-o"></i>
+						<span class="badge">5</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-head pull-right">
+						<h5 class="title">你有5条未读消息</h5>
+						<ul class="dropdown-list normal-list">
+							<li class="new">
+								<a href="">
+									<span class="thumb"><img src="images/photos/user1.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">John Doe <span class="badge badge-success">new</span></span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user2.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Jonathan Smith</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user3.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Jane Doe</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user4.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Mark Henry</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user5.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Jim Doe</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li class="new"><a href="">Read All Mails</a></li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+						<i class="fa fa-bell-o"></i>
+						<span class="badge">4</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-head pull-right">
+						<h5 class="title">Notifications</h5>
+						<ul class="dropdown-list normal-list">
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #1 overloaded. </span>
+									<em class="small">34 mins</em>
+								</a>
+							</li>
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #3 overloaded. </span>
+									<em class="small">1 hrs</em>
+								</a>
+							</li>
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #5 overloaded. </span>
+									<em class="small">4 hrs</em>
+								</a>
+							</li>
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #31 overloaded. </span>
+									<em class="small">4 hrs</em>
+								</a>
+							</li>
+							<li class="new"><a href="">See All Notifications</a></li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<img src="images/photos/user-avatar.png" alt="" />
+						zrlee
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+						<li><a href="#"><i class="fa fa-user"></i>个人信息</a></li>
+						<li><a href="#"><i class="fa fa-cog"></i>设置</a></li>
+						<li><a href="#"><i class="fa fa-sign-out"></i>退出登录</a></li>
+					</ul>
+				</li>
+
+			</ul>
+		</div>
+		<!--导航菜单结束notification menu end -->
+	</div>
+	<!-- header section end-->
+	<!-- page heading start-->
+	<div class="page-heading">
+		<h3>
+			考试详情
+		</h3>
+		<ul class="breadcrumb">
+			<li>
+				<a href="#">首页</a>
+			</li>
+			<li>
+				<a href="#">我的考试</a>
+			</li>
+			<li class="active"> 2019大学JavaEE期末考试</li>
+		</ul>
+	</div>
+	<!-- page heading end-->
+	<!--body wrapper start-->
+	<div class="wrapper" style="width:75%;float:left;">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel">
+					<div class="panel-heading text-center">
+						<p class="h3">{$paper.category.name}</p>
+					</div>
+					<!--试卷信息开始-->
+					<div class="panel-body">
+						<div class="row">
+							<div class="subject text-left" style="font-size: 18px;">
+								<div class="col-md-3">科目:{$paper.name}</div>
+								<div class="col-md-3">命题教师:{$paper.poster}</div>
+								<div class="col-md-6">考试时间:{$paper.start_date} {$paper.start_time} - {$paper.start_date} {$paper.end_time}</div>
+								<span></span>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="subject text-left lead" style="font-size: 18px;">
+								<div class="col-md-3">总分:{$paper.total_score}</div>
+								<!--<div class="col-md-3">成绩:99</div>-->
+								<div class="col-md-3"></div>
+								<span></span>
+							</div>
+						</div>
+						<hr>
+					</div>
+					<!--试卷信息结束-->
+					<div class="row" >
+						<form action="__HOME__/api/paper/store" method="post" id="form">
+
+							<input type="hidden" name="total_score" value="0" id="total_score">
+							<input type="hidden" name="id" value="{$id}">
+							<input type="hidden" name="name" value="{$paper.name}">
+							<input type="hidden" name="start_time" value="{$paper.start_time}">
+							<input type="hidden" name="end_time" value="{$paper.end_time}">
+							<input type="hidden" name="start_date" value="{$paper.start_date}">
+							<input type="hidden" name="duration" value="{$paper.duration}">
+							<input type="hidden" name="pass_score" value="{$paper.pass_score}">
+							<input type="hidden" name="remark" value="{$paper.remark}">
+							<div class="exam_content" id="exam_content">
+								<div style="margin: 9px 0 5px;" class="btn-group">
+									<button class="btn btn-info" type="button" style="margin-right:10px;margin-left:10px;" id="add_chapter">增加章节</button>
+									<button class="btn btn-info" type="button" style="margin-right:10px;" id="deploy_shrink">展开/收缩</button>
+								</div>
+								<!--<div class="chapter" data-index="1">-->
+									<!--<div class="chapter_label" >-->
+										<!--<span class="chapter_name">章节名称</span>-->
+										<!--<input type="text"  name="sessions[1][name]"  required />-->
+									<!--</div>-->
+									<!--<div class="chapter_label">-->
+										<!--<span class="chapter_name">章节描述</span>-->
+										<!--<input type="text" name="sessions[1][desc]"   required />-->
+									<!--</div>-->
+
+
+								<!--</div>-->
+
+
+								{volist name='paper_data.sessions' id='vo' key='k'}
+
+
+								<div class="chapter" data-index="{$k}">
+									<div class="chapter_label" >
+										<span class="chapter_name">章节名称</span>
+										<input type="text"  name="sessions[{$k}][name]" value="{$vo.name}"  required />
+									</div>
+									<div class="chapter_label">
+										<span class="chapter_name">章节描述</span>
+										<input type="text" name="sessions[{$k}][desc]"  value="{$vo.desc}"  required />
+									</div>
+
+
+									{if isset($vo.questions)}
+
+									{volist name='vo.questions' id='qsn'}
+
+									<div class="chapter_question">
+										<div class="remove_box"><span class="score">分值</span>
+											<input type="text" class="scoreText" name="sessions[{$k}][questions][{$qsn.id}][score]" value="{$qsn.score}">
+											<input type="text" hidden="" name="sessions[{$k}][questions][{$qsn.id}][data]" value="{$qsn.data}">
+											<input type="text" hidden="hidden" name="sessions[{$k}][questions][{$qsn.id}][id]" value="{$qsn.id}">
+											<input type="text" hidden="hidden" name="sessions[{$k}][questions][{$qsn.id}][name]" value="{$qsn.name}">
+											<input type="text" hidden="hidden" name="sessions[{$k}][questions][{$qsn.id}][type]" value="{$qsn.type}">
+											<input type="text" hidden="hidden" name="sessions[{$k}][questions][{$qsn.id}][key]" value="{$qsn.key}">
+											<span class="about">{$qsn.name}</span>
+										</div>
+										<input class="btn btn-danger exam" type="button" value="删除">
+									</div>
+									{/volist}
+									{/if}
+
+
+								</div>
+
+
+								{/volist}
+
+
+								
+								
+
+							</div>
+
+							<div class="row" style="margin: 40px">
+								<input type="button" value="提交" id="submitButton" class="btn btn-success btn-lg">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="exam_test" style="width: 300px; position: fixed;right: 0;top: 30px;" >
+		<div style="margin-top:10px;margin-left:10px;">
+
+			<div class="btn-group">
+				<select class="form-control qsn_type">
+					<option value="0"> 题目类型</option>
+					<option value="1"> 单选题</option>
+					<option value="2"> 多选题</option>
+					<option value="3"> 判断题</option>
+					<option value="4"> 填空题</option>
+					<option value="5"> 简答题</option>
+				</select>
+
+			</div>
+
+
+			<div class="btn-group">
+				<select class="form-control db_cate" style="width: 100px" >
+					<option value="0">所属题库</option>
+					{volist name='db' id='vo'}
+					<option value="{$vo.id}">{$vo.name}</option>
+					{/volist}
+				</select>
+			</div><!-- /btn-group -->
+
+		</div>
+		<ul class="exam_question" style="overflow: scroll;height: 600px;">
+
+
+			<li> 当前页数: <span class="current-page">1</span> / <span class="count-page">{$count}</span> <span class="btn btn-sm btn-primary prev-qsn"  disabled="true">上一页</span> <span class="btn btn-sm btn-primary next-qsn" >下一页</span> </li>
+			{volist name='questions' id='vo'}
+			<li class="qst_title" data-key="{$vo.key}" data-id="{$vo.id}" data-title="{$vo.title}" data-data="{$vo.data}"  data-qtype="{$vo.type}">{$vo.title}</li>
+			{/volist}
+
+
+		</ul>
+
+
+	</div>
+	<!--body wrapper end-->
+	<!--footer section start-->
+	<footer class="sticky-footer" style="background: #1b2128;color: #fff;">
+		2014 &copy; AdminEx by ThemeBucket
+	</footer>
+	<!--footer section end-->
+</div>
+<!-- main content end-->
+
+
+
+<script src="__STATIC__/js/exam.js"></script>
+
+<script>
+	$(function () {
+
+	    var page  = 1 ;
+
+	    // 题目类型选择改变动作 start
+		$('.qsn_type').change(function(){
+		    page = 1
+            $('.current-page').html(page)
+            $('.next-qsn').removeAttr('disabled')
+            // 移除原来的元素
+            $('.qst_title').remove() ;
+		    let qsn_type = $('.qsn_type').val()
+			let dbid = $('.db_cate').val()
+			if (qsn_type){
+			    // 发起请求 请求题目
+
+				data = {}
+
+				if (qsn_type!=0 && qsn_type!=null){
+
+                    data = {type:qsn_type}
+                }
+
+				if (dbid!=0 && dbid != null){
+				    data.dbid = dbid
+					console.log(data)
+				}
+                data.page = page
+
+				$.get('__HOME__/api/paper/find', data , function (res){
+				    console.log(res)
+
+
+					$('.count-page').html(res.count)
+				    if (res.status == 200) {
+                        if(res.data.length < 9 && res.data.length >=1){
+
+                            $('.next-qsn').attr('disabled' , 'true')
+
+                        }
+						// 添加刚获取到的题目
+
+						for (let index in res.data){
+						    // console.log(res.data[index]) ;
+							// 构建元素
+
+                            var opt = document.createElement("li");
+                            opt.className = 'qst_title'
+                            opt.dataset.data = res.data[index].data
+                            opt.dataset.qtype = res.data[index].type
+                            opt.dataset.title = res.data[index].title
+                            opt.dataset.id = res.data[index].id
+                            opt.dataset.key = res.data[index].key
+							opt.innerHTML = res.data[index].title
+							// var opt = `<li class="qst_title"    data-qtype="`+ res.data[index].type +`" data-data="`+ res.data[index].data +`" data-title="`+ res.data[index].title +`"  data-id="`+ res.data[index].id +`" >`+ res.data[index].title +`</li>`
+
+							$('.exam_question').append(opt)
+						}
+						
+					}else{
+
+				        alert('没有相关的题目！请先添加题目！')
+					}
+
+
+				} )
+
+			}
+
+
+		}) ;
+        // 题目类型选择改变动作 end
+
+
+		// 选择题库变化start
+		$('.db_cate').change(function(){
+		    page = 1 ;
+		    $('.current-page').html(page)
+            $('.next-qsn').removeAttr('disabled')
+            // 移除原来的元素
+            $('.qst_title').remove() ;
+            let qsn_type = $('.qsn_type').val()
+            let dbid = $('.db_cate').val()
+
+            data = {}
+
+            if (qsn_type!=0 && qsn_type!=null){
+
+                data = {type:qsn_type}
+            }
+
+            if (dbid!=0 && dbid != null){
+                data.dbid = dbid
+                console.log(data)
+            }
+            data.page = page
+
+            $.get('__HOME__/api/paper/find', data , function (res){
+                console.log(res)
+                $('.count-page').html(res.count)
+                if (res.status == 200) {
+                    if(res.data.length < 9 && res.data.length >=1){
+
+                        $('.next-qsn').attr('disabled' , 'true')
+                    }
+
+
+                    // 添加刚获取到的题目
+
+                    for (let index in res.data){
+                        // console.log(res.data[index]) ;
+                        // 构建元素
+                        // let opt = `<li class="qst_title">`+ res.data[index].title +`</li>`
+						qdata = ``+res.data[index].data +``
+
+                        var opt = document.createElement("li");
+                        opt.className = 'qst_title'
+                        opt.dataset.data = res.data[index].data
+                        opt.dataset.qtype = res.data[index].type
+                        opt.dataset.title = res.data[index].title
+                        opt.dataset.id = res.data[index].id
+                        opt.dataset.key = res.data[index].key
+                        opt.innerHTML = res.data[index].title
+                        // var opt = `<li class="qst_title"  data-qtype="`+ res.data[index].type +`" data-data="`+ qdata+`" data-title="`+ res.data[index].title +`"  data-id="`+ res.data[index].id +`" >`+ res.data[index].title +`</li>`
+                        $('.exam_question').append(opt)
+                    }
+
+                }else{
+                    alert('没有相关的题目！请先添加题目！')
+                }
+
+
+            } )
+
+
+		});
+		// 选择题目变化end
+
+
+		// 点击下一页
+		$('.next-qsn').click(function(){
+
+		    page ++
+            let qsn_type = $('.qsn_type').val()
+            let dbid = $('.db_cate').val()
+            data = {}
+
+            if (qsn_type!=0 && qsn_type!=null){
+
+                data = {type:qsn_type}
+            }
+
+            if (dbid!=0 && dbid != null){
+                data.dbid = dbid
+                console.log(data)
+            }
+            data.page = page
+
+            $.get('__HOME__/api/paper/find', data , function (res) {
+                if (res.status == 200) {
+                    $('.count-page').html(res.count)
+
+                    if(res.data.length < 9 && res.data.length >=1){
+
+                        $('.next-qsn').attr('disabled' , 'true')
+                        $('.prev-qsn').removeAttr('disabled')
+					}else{
+                        $('.prev-qsn').removeAttr('disabled')
+                        $('.next-qsn').removeAttr('disabled')
+					}
+                    $('.qst_title').remove() ;
+                    // 添加刚获取到的题目
+
+                    for (let index in res.data){
+                        // console.log(res.data[index]) ;
+                        // 构建元素
+                        // let opt = `<li class="qst_title">`+ res.data[index].title +`</li>`
+                        qdata = ``+res.data[index].data +``
+
+                        var opt = document.createElement("li");
+                        opt.className = 'qst_title'
+                        opt.dataset.data = res.data[index].data
+                        opt.dataset.qtype = res.data[index].type
+                        opt.dataset.title = res.data[index].title
+                        opt.dataset.id = res.data[index].id
+                        opt.dataset.key = res.data[index].key
+                        opt.innerHTML = res.data[index].title
+                        // var opt = `<li class="qst_title"  data-qtype="`+ res.data[index].type +`" data-data="`+ qdata+`" data-title="`+ res.data[index].title +`"  data-id="`+ res.data[index].id +`" >`+ res.data[index].title +`</li>`
+                        $('.exam_question').append(opt)
+                    }
+
+                }else{
+                    $('.next-qsn').attr('disabled' , 'true')
+                    alert('已经是最后一页！')
+                }
+
+            })
+
+
+			$('.current-page').html(page)
+
+
+
+
+
+		})  // end 点击下一页
+
+
+
+		// 点击上一页
+		$('.prev-qsn').click(function () {
+            page --
+            let qsn_type = $('.qsn_type').val()
+            let dbid = $('.db_cate').val()
+            data = {}
+
+            if (qsn_type!=0 && qsn_type!=null){
+
+                data = {type:qsn_type}
+            }
+
+            if (dbid!=0 && dbid != null){
+                data.dbid = dbid
+                console.log(data)
+            }
+            data.page = page
+
+			if (page < 1){
+
+                $('.prev-qsn').attr('disabled' , 'true')
+				$('.next-qsn').removeAttr('disabled')
+                alert('没有相关的题目！请先添加题目！')
+				// 当page=1 的时候点击上一页 page变成0 因此吧page回归到第一页
+				page =1
+			    return ;
+			}else{
+                $('.next-qsn').removeAttr('disabled')
+			}
+
+
+
+            $.get('__HOME__/api/paper/find', data , function (res) {
+                if (res.status == 200) {
+
+
+                    if (page == 1){
+
+                        $('.prev-qsn').attr('disabled' , 'true')
+
+                    }else{
+                        $('.next-qsn').removeAttr('disabled')
+					}
+
+
+                    $('.qst_title').remove() ;
+                    // 添加刚获取到的题目
+
+                    for (let index in res.data){
+                        // console.log(res.data[index]) ;
+                        // 构建元素
+                        // let opt = `<li class="qst_title">`+ res.data[index].title +`</li>`
+                        qdata = ``+res.data[index].data +``
+
+                        var opt = document.createElement("li");
+                        opt.className = 'qst_title'
+                        opt.dataset.data = res.data[index].data
+                        opt.dataset.qtype = res.data[index].type
+                        opt.dataset.title = res.data[index].title
+                        opt.dataset.id = res.data[index].id
+                        opt.dataset.key = res.data[index].key
+                        opt.innerHTML = res.data[index].title
+                        // var opt = `<li class="qst_title"  data-qtype="`+ res.data[index].type +`" data-data="`+ qdata+`" data-title="`+ res.data[index].title +`"  data-id="`+ res.data[index].id +`" >`+ res.data[index].title +`</li>`
+                        $('.exam_question').append(opt)
+                    }
+
+                }else{
+                    $('.prev-qsn').attr('disabled' , 'true')
+                    $('.next-qsn').removeAttr('disabled')
+                    alert('没有相关的题目！请先添加题目！')
+
+                }
+
+            })
+
+            $('.current-page').html(page)
+		})// end 点击上一页
+
+
+    })
+
+</script>
+
+{/block}

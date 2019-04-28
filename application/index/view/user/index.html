@@ -1,0 +1,335 @@
+{extend name="base/base" /}
+{block name="title"}标题{/block}
+
+{block name="left"}
+
+{include file="base/left_menu" /}
+
+{/block}
+
+
+{block name="main"}
+<!-- main content start-->
+<div class="main-content" >
+
+	<!-- header section start-->
+	<div class="header-section">
+
+		<!--toggle button start-->
+		<a class="toggle-btn"><i class="fa fa-bars"></i></a>
+		<!--toggle button end-->
+
+		<!--搜索开始-->
+		<form class="searchform" action="index.html" method="post">
+			<input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+		</form>
+		<!--搜索结束-->
+
+		<!--导航（通知）菜单开始notification menu start -->
+		<div class="menu-right">
+			<ul class="notification-menu">
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+						<i class="fa fa-tasks"></i>
+						<span class="badge">8</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-head pull-right">
+						<h5 class="title">你有8门需要考试的科目</h5>
+						<ul class="dropdown-list user-list">
+							<li class="new">
+								<a href="#">
+									<div class="task-info">
+										<div>JavaEE企业级开发考试</div>
+									</div>
+								</a>
+							</li>
+							<li class="new">
+								<a href="#">
+									<div class="task-info">
+										<div>大学英语4</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="task-info">
+										<div>高等数学</div>
+									</div>
+								</a>
+							</li>
+
+
+							<li class="new"><a href="">查看所有考试</a></li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+						<i class="fa fa-envelope-o"></i>
+						<span class="badge">5</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-head pull-right">
+						<h5 class="title">你有5条未读消息</h5>
+						<ul class="dropdown-list normal-list">
+							<li class="new">
+								<a href="">
+									<span class="thumb"><img src="images/photos/user1.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">John Doe <span class="badge badge-success">new</span></span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user2.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Jonathan Smith</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user3.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Jane Doe</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user4.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Mark Henry</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user5.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Jim Doe</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li class="new"><a href="">Read All Mails</a></li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+						<i class="fa fa-bell-o"></i>
+						<span class="badge">4</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-head pull-right">
+						<h5 class="title">Notifications</h5>
+						<ul class="dropdown-list normal-list">
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #1 overloaded. </span>
+									<em class="small">34 mins</em>
+								</a>
+							</li>
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #3 overloaded. </span>
+									<em class="small">1 hrs</em>
+								</a>
+							</li>
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #5 overloaded. </span>
+									<em class="small">4 hrs</em>
+								</a>
+							</li>
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #31 overloaded. </span>
+									<em class="small">4 hrs</em>
+								</a>
+							</li>
+							<li class="new"><a href="">See All Notifications</a></li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<img src="images/photos/user-avatar.png" alt="" />
+						zrlee
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+						<li><a href="#"><i class="fa fa-user"></i>个人信息</a></li>
+						<li><a href="#"><i class="fa fa-cog"></i>设置</a></li>
+						<li><a href="#"><i class="fa fa-sign-out"></i>退出登录</a></li>
+					</ul>
+				</li>
+
+			</ul>
+		</div>
+		<!--导航菜单结束notification menu end -->
+
+	</div>
+	<!-- header section end-->
+
+	<!-- page heading start-->
+	<!--<div class="page-heading">-->
+	<!--Page Tittle goes here-->
+	<!--</div>-->
+	<!-- page heading end-->
+
+	<!--body wrapper start-->
+	<div class="wrapper">
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel">
+							<div class="panel-body">
+								<div class="profile-pic text-center">
+									<img alt="" src="__STATIC__/images/boniu.jpeg">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="panel">
+							<div class="panel-body">
+								<ul class="p-info">
+									<li>
+										<div class="title">姓名</div>
+										<div class="desk">{$user.user_name}</div>
+									</li>
+									<li>
+										<div class="title">性别</div>
+										<div class="desk">{if $user.gender == 1}男{else}女{/if}</div>
+									</li>
+									<li>
+										<div class="title">班级</div>
+										<div class="desk">{$user.clz.name}</div>
+									</li>
+									<li>
+										<div class="title">学院</div>
+										<div class="desk">{$user.clz.dept.name}</div>
+									</li>
+									<li>
+										<div class="title">入学年份</div>
+										<div class="desk">2015</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel">
+							<div class="panel-body">
+								<div class="profile-desk">
+									<h1>PoNiu Da Yo</h1>
+									<span class="designation">电子信息工程</span>
+
+									<p>
+										电子信息工程是一门应用计算机等现代化技术进行电子信息控制和信息处理的学科，主要研究信息的获取与处理，电子设备与信息系统的设计、开发、应用和集成。
+									</p>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<style>
+				.desk{
+					font-weight: bold;
+				}
+			</style>
+			<div class="col-md-8">
+				<div class="col-md-6">
+					<div class="panel">
+						<div class="panel-body">
+							<ul class="p-info">
+								<li>
+									<div class="title">政治面貌</div>
+									<div class="desk">团员</div>
+								</li>
+								<li>
+									<div class="title">学生状态</div>
+									<div class="desk">在读</div>
+								</li>
+								<li>
+									<div class="title">籍贯</div>
+									<div class="desk">{$user.province}</div>
+								</li>
+								<li>
+									<div class="title">民族</div>
+									<div class="desk">汉</div>
+								</li>
+								<li>
+									<div class="title">家庭住址</div>
+									<div class="desk">{$user.address}</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="panel">
+						<div class="panel-body">
+							<ul class="p-info">
+								<li>
+									<div class="title">学号</div>
+									<div class="desk">15034490230</div>
+								</li>
+								<li>
+									<div class="title">手机号码</div>
+									<div class="desk">{$user.mobile}</div>
+								</li>
+								<li>
+									<div class="title">电子邮箱</div>
+									<div class="desk">{$user.email}</div>
+								</li>
+								<li>
+									<div class="title">&nbsp;</div>
+									<div class="desk">&nbsp;</div>
+								</li>
+								<li>
+									<div class="title">&nbsp;</div>
+									<div class="desk">&nbsp;</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!--body wrapper end-->
+
+	<!--footer section start-->
+	<footer class="">
+		2014 &copy; AdminEx by ThemeBucket
+	</footer>
+	<!--footer section end-->
+
+
+</div>
+<!-- main content end-->
+
+{/block}

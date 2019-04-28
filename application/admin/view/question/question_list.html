@@ -1,0 +1,439 @@
+{extend name="base/base" /}
+{block name="title"}标题{/block}
+
+{block name="left"}
+
+{include file="base/left_menu" /}
+
+{/block}
+
+
+{block name="main"}
+
+<script charset="utf-8" src="__STATIC__/js/jquery-1.10.2.min.js"></script>
+
+<!-- main content start-->
+<div class="main-content">
+
+	<!-- header section start-->
+	<div class="header-section">
+
+		<!--toggle button start-->
+		<a class="toggle-btn"><i class="fa fa-bars"></i></a>
+		<!--toggle button end-->
+
+		<!--搜索开始-->
+		<form class="searchform" action="index.html" method="post">
+			<input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+		</form>
+		<!--搜索结束-->
+
+		<!--导航（通知）菜单开始notification menu start -->
+		<div class="menu-right">
+			<ul class="notification-menu">
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+						<i class="fa fa-tasks"></i>
+						<span class="badge">8</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-head pull-right">
+						<h5 class="title">你有8门需要考试的科目</h5>
+						<ul class="dropdown-list user-list">
+							<li class="new">
+								<a href="#">
+									<div class="task-info">
+										<div>JavaEE企业级开发考试</div>
+									</div>
+								</a>
+							</li>
+							<li class="new">
+								<a href="#">
+									<div class="task-info">
+										<div>大学英语4</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="task-info">
+										<div>高等数学</div>
+									</div>
+								</a>
+							</li>
+
+
+							<li class="new"><a href="">查看所有考试</a></li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+						<i class="fa fa-envelope-o"></i>
+						<span class="badge">5</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-head pull-right">
+						<h5 class="title">你有5条未读消息</h5>
+						<ul class="dropdown-list normal-list">
+							<li class="new">
+								<a href="">
+									<span class="thumb"><img src="images/photos/user1.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">John Doe <span class="badge badge-success">new</span></span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user2.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Jonathan Smith</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user3.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Jane Doe</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user4.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Mark Henry</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user5.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Jim Doe</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li class="new"><a href="">Read All Mails</a></li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+						<i class="fa fa-bell-o"></i>
+						<span class="badge">4</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-head pull-right">
+						<h5 class="title">Notifications</h5>
+						<ul class="dropdown-list normal-list">
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #1 overloaded. </span>
+									<em class="small">34 mins</em>
+								</a>
+							</li>
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #3 overloaded. </span>
+									<em class="small">1 hrs</em>
+								</a>
+							</li>
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #5 overloaded. </span>
+									<em class="small">4 hrs</em>
+								</a>
+							</li>
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #31 overloaded. </span>
+									<em class="small">4 hrs</em>
+								</a>
+							</li>
+							<li class="new"><a href="">See All Notifications</a></li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<img src="images/photos/user-avatar.png" alt="" />
+						zrlee
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+						<li><a href="#"><i class="fa fa-user"></i>个人信息</a></li>
+						<li><a href="#"><i class="fa fa-cog"></i>设置</a></li>
+						<li><a href="#"><i class="fa fa-sign-out"></i>退出登录</a></li>
+					</ul>
+				</li>
+
+			</ul>
+		</div>
+		<!--导航菜单结束notification menu end -->
+
+	</div>
+	<!-- header section end-->
+
+
+	<!-- page heading start-->
+	<div class="page-heading">
+		<h3>
+			试题管理
+
+		</h3>
+
+		<ul class="breadcrumb">
+			<li>
+				<a href="#">首页</a>
+			</li>
+			<li>
+				<a href="#">题库管理</a>
+			</li>
+			<li class="active"> 试题管理</li>
+		</ul>
+	</div>
+	<!-- page heading end-->
+
+	<!--body wrapper start-->
+	<div class="wrapper">
+		<div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading">
+						试题管理，您可以在如下列表中选择试题进行修改或删除。
+						<!--<span class="tools pull-right">-->
+						<!--<a href="javascript:;" class="fa fa-chevron-down"></a>-->
+						<!--<a href="javascript:;" class="fa fa-times"></a>-->
+						<!--</span>-->
+					</header>
+					<div class="panel-body">
+
+						<div class="question-search">
+
+						</div>
+
+
+						<div class="adv-table">
+							<table class="table table-bordered table-striped">
+								<thead>
+								<tr>
+									<th>所属题库</th>
+									<th>试题类型</th>
+									<th>试题状态</th>
+									<th >试题题干</th>
+									<th >创建人</th>
+									<th >创建时间</th>
+									<th>操作</th>
+								</tr>
+								</thead>
+								<tbody>
+
+
+								{volist name='list' id='vo'}
+								<tr class="gradeX" style="vertical-align: middle;">
+									<td>{$vo.title}</td>
+									<td>
+										{switch $vo.type }
+										{case 1 }单选题{/case}
+										{case 2}多选题{/case}
+										{case 3}判断题{/case}
+										{case 4}填空题{/case}
+										{case 5}简答题{/case}
+
+										{/switch}
+									</td>
+									<td>{if $vo.status=1}开放{else/} 关闭{/if}</td>
+
+									<td>{$vo->dbinfo->name}</td>
+
+									<td>{$vo.author}</td>
+									<td> {:date('Y-m-d H:i:s', $vo.createdate)}</td>
+									<td>
+										<div class="btn btn-success question_preview" data-qid="{$vo.id}" id="">
+											预览
+										</div>
+										<a href="__HOME__/question/{$vo.id}/edit">
+											<div class="btn btn-warning">
+												修改
+											</div>
+										</a>
+
+										<form style="display: inline-block" action="__HOME__/question/{$vo.id}" method="post">
+											<input type="hidden" name="_method" value="DELETE" >
+											<input class="btn btn-danger" value="删除" type="submit">
+
+
+										</form>
+
+									</td>
+								</tr>
+
+								{/volist}
+								</tbody>
+
+
+							</table>
+						</div>
+					</div>
+					<!--分页开始-->
+					<div class="panel-body">
+						<section id="page">
+
+							<div class="my-page pull-right">
+								{$list|raw}
+							</div>
+
+
+						</section>
+					</div>
+					<!--分页结束-->
+				</section>
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade bs-example-modal-lg"  id="question_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		<div class="modal-dialog " style="width: 60%;" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">试题预览</h4>
+				</div>
+				<div class="modal-body">
+					<table class="table table-striped table-bordered">
+						<tr>
+							<td width="15%">试题类型</td>
+							<td class="type">
+								type
+							</td>
+						</tr>
+						<tr>
+							<td width="15%">试题难度</td>
+							<td class="q-level"></td>
+						</tr>
+						<tr>
+							<td width="15%">所属题库</td>
+							<td class="q-db"></td>
+						</tr>
+						<tr>
+							<td width="15%">试题状态</td>
+							<td class="q-status"></td>
+						</tr>
+						<tr>
+							<td width="15%">试题题干</td>
+							<td class="q-title"></td>
+						</tr>
+						<tr>
+							<td width="15%">选项设置</td>
+							<td>单选题</td>
+						</tr>
+
+						<tr>
+							<td width="15%">参考答案</td>
+							<td class="q-key"></td>
+						</tr>
+						<tr>
+							<td width="15%">答案解析</td>
+							<td class="q-resolve"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+
+
+
+	<script>
+		$(function(){
+		    $('.question_preview').click(function (){
+
+		        $qid = ($(this).data('qid'))
+		        $.get('__HOME__/question/' + $qid , function (res){
+		            console.log(res)
+
+		            // 设置试题类型
+					switch (res.type) {
+						case 1:
+						    $('.type').html('单选题') ;
+                    }
+                    // 设置试题难度
+					switch (res.level) {
+						case 1:
+                            $('.q-level').html('非常容易') ;
+                            break;
+                        case 2:
+                            $('.q-level').html('比较容易') ;
+                            break;
+                        case 3:
+                            $('.q-level').html('常规') ;
+                            break;
+                        case 4:
+                            $('.q-level').html('困难') ;
+                            break;
+                        case 5:
+                            $('.q-level').html('非常困难 ') ;
+                            break;
+
+                    }
+					// 设置题干
+					$('.q-title').html(res.title) ;
+
+		            // 所属题库
+					$('.q-db').html(res.db.name) ;
+					// 参考答案
+					if (res.key == 'Y'){
+                        $('.q-key').html('正确') ;
+					}else if(res.key == 'N'){
+                        $('.q-key').html('错误') ;
+					}else{
+                        $('.q-key').html(res.key) ;
+					}
+
+
+                    // 解析
+                    $('.q-resolve').html(res.resolve) ;
+                    // 试题状态
+					if (res.status ==1){
+					    $('.q-status').html("开放")
+					} else{
+                        $('.q-status').html("关闭")
+					}
+                    $('#question_modal').modal('show') ;
+
+				} )
+
+			})
+		})
+	</script>
+
+	<!--body wrapper end-->
+
+	<!--footer section start-->
+	<footer>
+		2014 &copy; AdminEx by ThemeBucket
+	</footer>
+	<!--footer section end-->
+
+
+</div>
+<!-- main content end-->
+
+{/block}

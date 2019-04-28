@@ -1,0 +1,575 @@
+{extend name="base/base" /}
+{block name="title"}标题{/block}
+
+{block name="left"}
+
+{include file="base/left_menu" /}
+
+{/block}
+
+
+{block name="main"}
+
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/common.css" />
+<!-- main content start-->
+<div class="main-content">
+
+	<!-- header section start-->
+	<div class="header-section">
+
+		<!--toggle button start-->
+		<a class="toggle-btn"><i class="fa fa-bars"></i></a>
+		<!--toggle button end-->
+
+		<!--搜索开始-->
+		<form class="searchform" action="index.html" method="post">
+			<input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+		</form>
+		<!--搜索结束-->
+
+		<!--导航（通知）菜单开始notification menu start -->
+		<div class="menu-right">
+			<ul class="notification-menu">
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+						<i class="fa fa-tasks"></i>
+						<span class="badge">8</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-head pull-right">
+						<h5 class="title">你有8门需要考试的科目</h5>
+						<ul class="dropdown-list user-list">
+							<li class="new">
+								<a href="#">
+									<div class="task-info">
+										<div>JavaEE企业级开发考试</div>
+									</div>
+								</a>
+							</li>
+							<li class="new">
+								<a href="#">
+									<div class="task-info">
+										<div>大学英语4</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="task-info">
+										<div>高等数学</div>
+									</div>
+								</a>
+							</li>
+
+
+							<li class="new"><a href="">查看所有考试</a></li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+						<i class="fa fa-envelope-o"></i>
+						<span class="badge">5</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-head pull-right">
+						<h5 class="title">你有5条未读消息</h5>
+						<ul class="dropdown-list normal-list">
+							<li class="new">
+								<a href="">
+									<span class="thumb"><img src="images/photos/user1.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">John Doe <span class="badge badge-success">new</span></span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user2.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Jonathan Smith</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user3.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Jane Doe</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user4.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Mark Henry</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="thumb"><img src="images/photos/user5.png" alt="" /></span>
+									<span class="desc">
+													<span class="name">Jim Doe</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+								</a>
+							</li>
+							<li class="new"><a href="">Read All Mails</a></li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+						<i class="fa fa-bell-o"></i>
+						<span class="badge">4</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-head pull-right">
+						<h5 class="title">Notifications</h5>
+						<ul class="dropdown-list normal-list">
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #1 overloaded. </span>
+									<em class="small">34 mins</em>
+								</a>
+							</li>
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #3 overloaded. </span>
+									<em class="small">1 hrs</em>
+								</a>
+							</li>
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #5 overloaded. </span>
+									<em class="small">4 hrs</em>
+								</a>
+							</li>
+							<li class="new">
+								<a href="">
+									<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+									<span class="name">Server #31 overloaded. </span>
+									<em class="small">4 hrs</em>
+								</a>
+							</li>
+							<li class="new"><a href="">See All Notifications</a></li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<img src="images/photos/user-avatar.png" alt="" />
+						zrlee
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+						<li><a href="#"><i class="fa fa-user"></i>个人信息</a></li>
+						<li><a href="#"><i class="fa fa-cog"></i>设置</a></li>
+						<li><a href="#"><i class="fa fa-sign-out"></i>退出登录</a></li>
+					</ul>
+				</li>
+
+			</ul>
+		</div>
+		<!--导航菜单结束notification menu end -->
+
+	</div>
+	<!-- header section end-->
+
+	<!-- page heading start-->
+	<div class="page-heading">
+		<h3>
+			考试详情
+		</h3>
+		<ul class="breadcrumb">
+			<li>
+				<a href="#">首页</a>
+			</li>
+			<li>
+				<a href="#">我的考试</a>
+			</li>
+			<li class="active"> {$paper.name}</li>
+		</ul>
+	</div>
+	<!-- page heading end-->
+
+	<!--body wrapper start-->
+	<div class="wrapper">
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel">
+					<div class="panel-heading text-center">
+						<p class="h3">{$paper.category.name}</p>
+					</div>
+
+					<!--试卷信息开始-->
+					<div class="panel-body">
+
+						<div class="row">
+							<div class="subject text-left" style="font-size: 18px;">
+								<div class="col-md-3">科目:{$paper.name}</div>
+								<div class="col-md-3">命题教师:{$paper.poster}</div>
+
+								<div class="col-md-3">使用班级:{$classes}</div>
+								<span></span>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="subject text-left lead" style="font-size: 18px;">
+								<div class="col-md-3">考生姓名:{$user.user_name}</div>
+								<div class="col-md-3">总分:{$paper.total_score}</div>
+								<div class="col-md-3">成绩:</div>
+								<div class="col-md-3"></div>
+								<span></span>
+							</div>
+						</div>
+
+						<hr>
+
+					</div>
+					<!--试卷信息结束-->
+
+					<script src="__STATIC__/js/jquery-1.10.2.min.js"></script>
+
+					<!--填空题替换-->
+					<script>
+						$(function(){
+						    obj = $('.tk')
+							for (let i=0 ; i< obj.length; i++){
+							    newObj = $(obj[i]) ;
+
+							    let qsn_id = newObj.data('id')
+                                str = newObj.html().replace(/\[\]/g, `<input type="text" name="`+qsn_id+`[ukey][]">`)
+                                newObj.html(str)
+
+							}
+						})
+					</script>
+
+					<div class="row">
+						<div class="col-md-12">
+							<!--左边题目开始-->
+							<form action="__HOME__/exam/submit" method="post">
+								<input type="hidden" name="id" value="{$paper.id}">
+							<div class="panel col-md-8 question-panel">
+
+								{volist name='paper_data.sessions' id='vo' }
+
+								<div class="">
+									<p class="h4">{$vo.name} ({$vo.desc})</p>
+
+								</div>
+
+
+
+
+
+								<!--循环题目-->
+								{volist name='vo.questions' id='qsn' key='index'}
+
+								{if $qsn.type !=4}
+								<div id="{$qsn.id}"></div>
+								<br>
+								<div class="panel-body" >
+									<div class="item-li">
+										<p class="exam-title">
+
+										<div class="pull-left" style="font-weight: bold;">
+											{$index} . {$qsn.name}
+											<input type="hidden" name="{$qsn.id}[score]" value="{$qsn.score}">
+										</div>
+
+
+									</div>
+
+								</div>
+								{else}
+								<!--// 填空题-->
+								<div id="{$qsn.id}"></div>
+								<br>
+								<div class="panel-body" >
+									<div class="item-li">
+										<p class="exam-title">
+
+										<div class="pull-left tk" data-id="{$qsn.id}">
+											{$index} . {$qsn.name}
+										<input type="hidden" name="{$qsn.id}[score]" value="{$qsn.score}">
+										</div>
+
+
+										</p>
+
+
+
+
+									</div>
+								</div>
+
+								{/if}
+
+								<!--选择题选项-->
+								{if $qsn.type ==1}
+
+								{volist name='qsn.data.item' id='item' key='aindex'}
+								<p class="exam-selection" style="margin-left: 30px;">
+									<input type="radio" name="{$qsn.id}[ukey]" value="{if $aindex==1}A{elseif $aindex==2}B{elseif $aindex==3}C{elseif $aindex==4}D{/if}"
+																 id="{$qsn.id}{if $aindex==1}A{elseif $aindex==2}B{elseif $aindex==3}C{elseif $aindex==4}D{/if}" />
+									<label style="font-weight: normal" for="{$qsn.id}{if $aindex==1}A{elseif $aindex==2}B{elseif $aindex==3}C{elseif $aindex==4}D{/if}">{if $aindex==1}A{elseif $aindex==2}B{elseif $aindex==3}C{elseif $aindex==4}D{/if} 、 {$item}</label>
+								</p>
+
+
+								{/volist}
+								{/if}
+
+								<!--判断题-->
+
+								{if $qsn.type==3}
+
+								<p style="margin-left: 30px;">
+									<input type="radio" name="{$qsn.id}[ukey]" value="Y" id="{$qsn.id}1"> <label style="font-weight: normal" for="{$qsn.id}1">正确</label> <br>
+									<input type="radio" name="{$qsn.id}[ukey]" value="N" id="{$qsn.id}2"> <label style="font-weight: normal"  for="{$qsn.id}2">错误</label>
+								</p>
+
+
+
+								{/if}
+
+								<!-- 简答题-->
+
+								{if $qsn.type==5}
+								<div class="">
+									<textarea rows="8" cols="80" class="text-left form-control" name="{$qsn.id}[ukey]">input here</textarea>
+								</div>
+
+
+								{/if}
+
+
+								{/volist}
+
+								{/volist}
+
+
+
+
+								<!--<div class="">-->
+									<!--<p class="h4">一、单项选择题(每小题2分，共20分)</p>-->
+								<!--</div>-->
+
+
+								<!--<div class="panel-body">-->
+									<!--<div class="item-li">-->
+										<!--<p class="exam-title">-->
+
+										<!--<div class="pull-left" style="font-weight: bold;" id="q-1-1">-->
+											<!--1.下面哪些是Thread类的方法（）-->
+										<!--</div>-->
+
+
+										<!--</p>-->
+										<!--<br>-->
+
+										<!--<p class="exam-selection"><input type="radio" name="q-1-1" id="" value="" />A. start() </p>-->
+										<!--<p class="exam-selection"><input type="radio" name="q-1-1" id="" value="" />B. run() </p>-->
+										<!--<p class="exam-selection"><input type="radio" name="q-1-1" id="" value="" />C. exit()</p>-->
+										<!--<p class="exam-selection"><input type="radio" name="q-1-1" id="" value="" />D. getPriority()</p>-->
+
+									<!--</div>-->
+
+								<!--</div>-->
+								<!-- 选择题结束 -->
+
+
+								<!-- 填空开始 -->
+								<!--<div class="">-->
+									<!--<p class="h4">二、填空题(每小题2分，共20分)</p>-->
+								<!--</div>-->
+
+
+								<!--<div class="panel-body">-->
+									<!--<div class="item-li">-->
+										<!--<p class="exam-title">-->
+
+										<!--<div class="pull-left" id="q-1-1">-->
+											<!--1.在火场中，充满了各种各样的危险：烈焰、高温、烟雾、毒气等。自我保护措施是用湿毛巾捂住 <input type="text" name="" id="" value="" />，必要时 <input-->
+												<!--type="text" name="" id="" value="" /> 前行-->
+										<!--</div>-->
+
+
+										<!--</p>-->
+										<!--<br>-->
+										<!--<br>-->
+
+
+
+									<!--</div>-->
+								<!--</div>-->
+								<!-- 填空结束 -->
+
+
+								<!-- 判断开始 -->
+								<!--<div class="">-->
+									<!--<p class="h4">四、判断题(每小题2分，共20分)</p>-->
+								<!--</div>-->
+
+
+								<!--<div class="panel-body">-->
+									<!--<div class="item-li">-->
+										<!--<p class="exam-title">-->
+
+										<!--<div class="pull-left" style="font-weight: bold;" id="q-1-1">-->
+											<!--1.初次申领的机动车驾驶证的有效期为6年。-->
+										<!--</div>-->
+										<!--<div class="pull-right">-->
+											<!--&lt;!&ndash; 答对的 &ndash;&gt;-->
+											<!--<i class="fa fa-check  fa-lg" style="color: green;"></i>-->
+											<!--<span class="badge">1</span>-->
+										<!--</div>-->
+
+										<!--</p>-->
+										<!--<br>-->
+										<!--<br>-->
+										<!--<p> <input type="radio" name="" id="" value="" /> 参考答案：正确</p>-->
+										<!--<p><input type="radio" name="" id="" value="" /> 用户答案：正确</p>-->
+
+
+
+									<!--</div>-->
+								<!--</div>-->
+								<!-- 判断结束 -->
+
+								<!-- 简答开始 -->
+								<!--<div class="">-->
+									<!--<p class="h4">四、判断题(每小题2分，共20分)</p>-->
+								<!--</div>-->
+
+
+								<!--<div class="panel-body">-->
+									<!--<div class="item-li">-->
+										<!--<p class="exam-title">-->
+
+										<!--<div class="pull-left" style="font-weight: bold;" id="q-1-1">-->
+											<!--1.如何做一名合格的驾驶员？-->
+										<!--</div>-->
+
+										<!--<br>-->
+										<!--<div class="">-->
+											<!--<textarea rows="8" cols="80" class="text-left form-control">input here</textarea>-->
+										<!--</div>-->
+
+										<!--</p>-->
+
+
+									<!--</div>-->
+								<!--</div>-->
+								<!-- 简答结束 -->
+								<br><br>
+								<input type="submit" value="交卷" class="btn btn-lg btn-success">
+							</div>
+
+
+
+							</form>
+							<!--左边题目结束-->
+
+
+							<!--右边 答题情况-->
+							<div class="panel col-md-4 answer-panel">
+								<div class="">
+									<p class="h4">答题情况</p>
+
+									<div class="selections">
+										{volist name='paper_data.sessions' id='vo' }
+										<p>{$vo.name}</p>
+
+										<ul class="item-list">
+
+											{volist name='vo.questions' id='qsn' key='qindex'}
+
+											<li class="selection-item"><a href="#{$qsn.id}">{$qindex}</a></li>
+
+											{/volist}
+
+										</ul>
+
+										{/volist}
+
+
+
+										<!--<p>选择题</p>-->
+										<!--<ul class="item-list">-->
+
+											<!--<li class="selection-item">1</li>-->
+											<!--<li class="selection-item">2</li>-->
+											<!--<a href="#q-1-3">-->
+												<!--<li class="selection-item">3</li>-->
+											<!--</a>-->
+
+											<!--<li class="selection-item">4</li>-->
+
+										<!--</ul>-->
+
+										<!--<p>判断题</p>-->
+										<!--<ul class="item-list">-->
+
+											<!--<li class="selection-item">1</li>-->
+											<!--<li class="selection-item">2</li>-->
+											<!--<a href="#q-1-3">-->
+												<!--<li class="selection-item">3</li>-->
+											<!--</a>-->
+
+											<!--<li class="selection-item">4</li>-->
+
+										<!--</ul>-->
+										<!--<p>判断题</p>-->
+										<!--<ul class="item-list">-->
+
+											<!--<li class="selection-item">1</li>-->
+											<!--<li class="selection-item">2</li>-->
+											<!--<a href="#q-1-3">-->
+												<!--<li class="selection-item">3</li>-->
+											<!--</a>-->
+
+											<!--<li class="selection-item">4</li>-->
+
+										<!--</ul>-->
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+
+
+
+
+	</div>
+	<!--body wrapper end-->
+
+	<!--footer section start-->
+	<footer class="sticky-footer" style="background: #1b2128;color: #fff;">
+		2014 &copy; AdminEx by ThemeBucket
+	</footer>
+	<!--footer section end-->
+
+
+</div>
+<!-- main content end-->
+
+{/block}

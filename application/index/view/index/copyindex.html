@@ -1,0 +1,589 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<meta name="keywords" content="admin, dashboard, bootstrap, template, flat, modern, theme, responsive, fluid, retina, backend, html5, css, css3">
+		<meta name="description" content="">
+		<meta name="author" content="ThemeBucket">
+		<link rel="shortcut icon" href="#" type="image/png">
+
+		<title>AdminX</title>
+
+		<!--icheck-->
+		<link href="__STATIC__/js/iCheck/skins/minimal/minimal.css" rel="stylesheet">
+		<link href="__STATIC__/js/iCheck/skins/square/square.css" rel="stylesheet">
+		<link href="__STATIC__/js/iCheck/skins/square/red.css" rel="stylesheet">
+		<link href="__STATIC__/js/iCheck/skins/square/blue.css" rel="stylesheet">
+
+		<!--dashboard calendar-->
+		<link href="__STATIC__/css/clndr.css" rel="stylesheet">
+
+		<!--Morris Chart CSS -->
+		<link rel="stylesheet" href="__STATIC__/js/morris-chart/morris.css">
+
+		<!--common-->
+		<link href="__STATIC__/css/style.css" rel="stylesheet">
+		<link href="__STATIC__/css/style-responsive.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/common.css"/>
+
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+  <script src="__STATIC__js/html5shiv.js"></script>
+  <script src="__STATIC__/js/respond.min.js"></script>
+  <![endif]-->
+	</head>
+
+	<body class="sticky-header">
+
+		<section>
+			<!-- left side start-->
+			<div class="left-side sticky-left-side">
+
+				<!--logo and iconic logo start-->
+				<div class="logo">
+					<a href="index.html"><img src="__STATIC__/images/logo.png" alt=""></a>
+				</div>
+
+				<div class="logo-icon text-center">
+					<a href="index.html"><img src="__STATIC__/images/logo_icon.png" alt=""></a>
+				</div>
+				<!--logo and iconic logo end-->
+
+				<div class="left-side-inner">
+
+					<!-- visible to small devices only -->
+					<div class="visible-xs hidden-sm hidden-md hidden-lg">
+						<div class="media logged-user">
+							<img alt="" src="__STATIC__/images/photos/user-avatar.png" class="media-object">
+							<div class="media-body">
+								<h4><a href="#">zrlee</a></h4>
+								<span>"Hello There..."</span>
+							</div>
+						</div>
+
+						<h5 class="left-nav-title">Account Information</h5>
+						<ul class="nav nav-pills nav-stacked custom-nav">
+							<li><a href="#"><i class="fa fa-user"></i> <span>Profile</span></a></li>
+							<li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
+							<li><a href="#"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
+						</ul>
+					</div>
+
+					<!--sidebar nav start-->
+					<ul class="nav nav-pills nav-stacked custom-nav">
+
+
+						<li class="active"><a href="admin_index.html"><i class="fa fa-home"></i> <span>首页</span></a></li>
+
+
+						{/* 循环父菜单 */}
+						{volist name="menus" id="vo"}
+						<li class="menu-list"><a href=""><i class="fa fa-laptop"></i> <span>{$vo.name}</span></a>
+							<ul class="sub-menu-list">
+
+								{/* 循环遍历子菜单*/}
+								{volist name="$vo['child']" id="child"}
+								<li><a href="../question_db/db_add.html"> {$child['name']}</a></li>
+								{/volist}
+
+							</ul>
+						</li>
+						{/volist}
+
+
+
+
+						<!--<li class="menu-list"><a href=""><i class="fa fa-laptop"></i> <span>题库管理</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="db_add.html"> 新增题库</a></li>-->
+								<!--<li><a href="db_list.html"> 题库列表</a></li>-->
+								<!--<li><a href="question_add.html"> 新增试题</a></li>-->
+								<!--<li><a href="table_exam.html"> 批量导入试题</a></li>-->
+								<!--<li><a href="question_list.html"> 试题管理</a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+						<!--<li class="menu-list"><a href=""><i class="fa fa-user"></i> <span>试卷管理</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="create_paper.html"> 创建试卷</a></li>-->
+								<!--<li><a href="paper_management.html"> 试卷管理</a></li>-->
+								<!--<li><a href="paper_category.html"> 试卷分类管理</a></li>-->
+
+							<!--</ul>-->
+						<!--</li>-->
+
+						<!--<li class="menu-list"><a href=""><i class="fa fa-laptop"></i> <span>统计分析</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="blank_page.html">试卷分析</a></li>-->
+								<!--<li><a href="boxed_view.html">考试分析</a></li>-->
+								<!--<li><a href="leftmenu_collapsed_view.html">成绩分析</a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+
+						<!--<li class="menu-list"><a href=""><i class="fa fa-laptop"></i> <span>用户管理</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="blank_page.html">用户管理</a></li>-->
+								<!--<li><a href="boxed_view.html">院系管理</a></li>-->
+								<!--<li><a href="leftmenu_collapsed_view.html">班级管理</a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+						<!--<li class="menu-list"><a href=""><i class="fa fa-laptop"></i> <span>公告管理</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="blank_page.html">公告列表</a></li>-->
+								<!--<li><a href="boxed_view.html">公告分类</a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+						<!--<li class="menu-list"><a href=""><i class="fa fa-laptop"></i> <span>系统管理</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="blank_page.html">管理员列表</a></li>-->
+								<!--<li><a href="boxed_view.html">角色管理</a></li>-->
+								<!--<li><a href="boxed_view.html">系统日志</a></li>-->
+								<!--<li><a href="boxed_view.html">关于软件</a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+
+						<!--<li class="menu-list"><a href=""><i class="fa fa-book"></i> <span>UI Elements</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="general.html"> General</a></li>-->
+								<!--<li><a href="buttons.html"> Buttons</a></li>-->
+								<!--<li><a href="tabs-accordions.html"> Tabs & Accordions</a></li>-->
+								<!--<li><a href="typography.html"> Typography</a></li>-->
+								<!--<li><a href="slider.html"> Slider</a></li>-->
+								<!--<li><a href="panels.html"> Panels</a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+						<!--<li class="menu-list"><a href=""><i class="fa fa-cogs"></i> <span>Components</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="grids.html"> Grids</a></li>-->
+								<!--<li><a href="gallery.html"> Media Gallery</a></li>-->
+								<!--<li><a href="calendar.html"> Calendar</a></li>-->
+								<!--<li><a href="tree_view.html"> Tree View</a></li>-->
+								<!--<li><a href="nestable.html"> Nestable</a></li>-->
+
+							<!--</ul>-->
+						<!--</li>-->
+
+						<!--<li><a href="fontawesome.html"><i class="fa fa-bullhorn"></i> <span>Fontawesome</span></a></li>-->
+
+						<!--<li class="menu-list"><a href=""><i class="fa fa-envelope"></i> <span>Mail</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="mail.html"> Inbox</a></li>-->
+								<!--<li><a href="mail_compose.html"> Compose Mail</a></li>-->
+								<!--<li><a href="mail_view.html"> View Mail</a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+
+						<!--<li class="menu-list"><a href=""><i class="fa fa-tasks"></i> <span>Forms</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="form_layouts.html"> Form Layouts</a></li>-->
+								<!--<li><a href="form_advanced_components.html"> Advanced Components</a></li>-->
+								<!--<li><a href="form_wizard.html"> Form Wizards</a></li>-->
+								<!--<li><a href="form_validation.html"> Form Validation</a></li>-->
+								<!--<li><a href="editors.html"> Editors</a></li>-->
+								<!--<li><a href="inline_editors.html"> Inline Editors</a></li>-->
+								<!--<li><a href="pickers.html"> Pickers</a></li>-->
+								<!--<li><a href="dropzone.html"> Dropzone</a></li>-->
+								<!--<li><a href="http://www.weidea.net"> More</a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+						<!--<li class="menu-list"><a href=""><i class="fa fa-bar-chart-o"></i> <span>Charts</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="flot_chart.html"> Flot Charts</a></li>-->
+								<!--<li><a href="morris.html"> Morris Charts</a></li>-->
+								<!--<li><a href="chartjs.html"> Chartjs</a></li>-->
+								<!--<li><a href="c3chart.html"> C3 Charts</a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+						<!--<li class="menu-list"><a href="#"><i class="fa fa-th-list"></i> <span>Data Tables</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="basic_table.html"> Basic Table</a></li>-->
+								<!--<li><a href="dynamic_table.html"> Advanced Table</a></li>-->
+								<!--<li><a href="responsive_table.html"> Responsive Table</a></li>-->
+								<!--<li><a href="editable_table.html"> Edit Table</a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+
+						<!--<li class="menu-list"><a href="#"><i class="fa fa-map-marker"></i> <span>Maps</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="google_map.html"> Google Map</a></li>-->
+								<!--<li><a href="vector_map.html"> Vector Map</a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+						<!--<li class="menu-list"><a href=""><i class="fa fa-file-text"></i> <span>Extra Pages</span></a>-->
+							<!--<ul class="sub-menu-list">-->
+								<!--<li><a href="profile.html"> Profile</a></li>-->
+								<!--<li><a href="invoice.html"> Invoice</a></li>-->
+								<!--<li><a href="pricing_table.html"> Pricing Table</a></li>-->
+								<!--<li><a href="timeline.html"> Timeline</a></li>-->
+								<!--<li><a href="blog_list.html"> Blog List</a></li>-->
+								<!--<li><a href="blog_details.html"> Blog Details</a></li>-->
+								<!--<li><a href="directory.html"> Directory </a></li>-->
+								<!--<li><a href="chat.html"> Chat </a></li>-->
+								<!--<li><a href="404.html"> 404 Error</a></li>-->
+								<!--<li><a href="500.html"> 500 Error</a></li>-->
+								<!--<li><a href="registration.html"> Registration Page</a></li>-->
+								<!--<li><a href="lock_screen.html"> Lockscreen </a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+						<!--<li><a href="login.html"><i class="fa fa-sign-in"></i> <span>Login Page</span></a></li>-->
+
+					</ul>
+					<!--sidebar nav end-->
+
+				</div>
+			</div>
+			<!-- left side end-->
+
+			<!-- main content start-->
+			<div class="main-content">
+
+				<!-- header section start-->
+				<div class="header-section">
+
+					<!--toggle button start-->
+					<a class="toggle-btn"><i class="fa fa-bars"></i></a>
+					<!--toggle button end-->
+
+					<!--搜索开始-->
+					<form class="searchform" action="index.html" method="post">
+						<input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+					</form>
+					<!--搜索结束-->
+
+					<!--导航（通知）菜单开始notification menu start -->
+					<div class="menu-right">
+						<ul class="notification-menu">
+							<li>
+								<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+									<i class="fa fa-tasks"></i>
+									<span class="badge">8</span>
+								</a>
+								<div class="dropdown-menu dropdown-menu-head pull-right">
+									<h5 class="title">你有8门需要考试的科目</h5>
+									<ul class="dropdown-list user-list">
+										<li class="new">
+											<a href="#">
+												<div class="task-info">
+													<div>JavaEE企业级开发考试</div>
+												</div>
+											</a>
+										</li>
+										<li class="new">
+											<a href="#">
+												<div class="task-info">
+													<div>大学英语4</div>
+												</div>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<div class="task-info">
+													<div>高等数学</div>
+												</div>
+											</a>
+										</li>
+
+
+										<li class="new"><a href="">查看所有考试</a></li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+									<i class="fa fa-envelope-o"></i>
+									<span class="badge">5</span>
+								</a>
+								<div class="dropdown-menu dropdown-menu-head pull-right">
+									<h5 class="title">你有5条未读消息</h5>
+									<ul class="dropdown-list normal-list">
+										<li class="new">
+											<a href="">
+												<span class="thumb"><img src="__STATIC__/images/photos/user1.png" alt="" /></span>
+												<span class="desc">
+													<span class="name">John Doe <span class="badge badge-success">new</span></span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="">
+												<span class="thumb"><img src="__STATIC__/images/photos/user2.png" alt="" /></span>
+												<span class="desc">
+													<span class="name">Jonathan Smith</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="">
+												<span class="thumb"><img src="__STATIC__/images/photos/user3.png" alt="" /></span>
+												<span class="desc">
+													<span class="name">Jane Doe</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="">
+												<span class="thumb"><img src="__STATIC__/images/photos/user4.png" alt="" /></span>
+												<span class="desc">
+													<span class="name">Mark Henry</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="">
+												<span class="thumb"><img src="__STATIC__/images/photos/user5.png" alt="" /></span>
+												<span class="desc">
+													<span class="name">Jim Doe</span>
+													<span class="msg">Lorem ipsum dolor sit amet...</span>
+												</span>
+											</a>
+										</li>
+										<li class="new"><a href="">Read All Mails</a></li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+									<i class="fa fa-bell-o"></i>
+									<span class="badge">4</span>
+								</a>
+								<div class="dropdown-menu dropdown-menu-head pull-right">
+									<h5 class="title">Notifications</h5>
+									<ul class="dropdown-list normal-list">
+										<li class="new">
+											<a href="">
+												<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+												<span class="name">Server #1 overloaded. </span>
+												<em class="small">34 mins</em>
+											</a>
+										</li>
+										<li class="new">
+											<a href="">
+												<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+												<span class="name">Server #3 overloaded. </span>
+												<em class="small">1 hrs</em>
+											</a>
+										</li>
+										<li class="new">
+											<a href="">
+												<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+												<span class="name">Server #5 overloaded. </span>
+												<em class="small">4 hrs</em>
+											</a>
+										</li>
+										<li class="new">
+											<a href="">
+												<span class="label label-danger"><i class="fa fa-bolt"></i></span>
+												<span class="name">Server #31 overloaded. </span>
+												<em class="small">4 hrs</em>
+											</a>
+										</li>
+										<li class="new"><a href="">See All Notifications</a></li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+									<img src="__STATIC__/images/photos/user-avatar.png" alt="" />
+									zrlee
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+									<li><a href="#"><i class="fa fa-user"></i>个人信息</a></li>
+									<li><a href="#"><i class="fa fa-cog"></i>设置</a></li>
+									<li><a href="#"><i class="fa fa-sign-out"></i>退出登录</a></li>
+								</ul>
+							</li>
+
+						</ul>
+					</div>
+					<!--导航菜单结束notification menu end -->
+
+				</div>
+				<!-- header section end-->
+
+				<!-- page heading start-->
+				<div class="container">
+					<h3>
+						首页
+					</h3>
+					<hr>
+					<!-- <ul class="breadcrumb">
+						<li>
+							<a href="#">考试中心</a>
+						</li>
+						<li class="active">首页</li>
+					</ul> -->
+				</div>
+				<!-- page heading end-->
+
+				<div class="container">
+					<div class="row">
+						<div class="panel">
+							<div class="panel-body">
+								<h4>欢迎使用网络考试系统</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!--body wrapper start-->
+				<div class="container clearfix">
+					<div class="row">
+
+						<div class="col-md-8">
+							<!-- 统计开始 -->
+							<div class="panel">
+								<div class="panel-body">
+									<h4>数据统计</h4>
+									<table class="table table-bordered table-striped table-hover">
+
+
+
+										<tr>
+											<td>用户统计</td>
+											<td>正常 : 10 , 待审核 : 0 , 锁定 : 0</td>
+										</tr>
+										<tr>
+											<td>题库统计</td>
+											<td>题库数量 : 1 , 试题数量 : 45</td>
+										</tr>
+										<tr>
+											<td>试题统计</td>
+											<td>单选题 : 10 , 多选题 : 10 , 判断题 : 10 , 填空题 : 10 , 问答题 : 5</td>
+										</tr>
+										<tr>
+											<td>试卷统计</td>
+											<td>试卷数量 : 2 , 进行中 : 0 , 已结束 : 2</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<!-- 统计结束 -->
+						</div>
+
+						<div class="col-md-4">
+							<!--系统通知开始-->
+							<div class="panel">
+								<header class="panel-heading">
+									通知公告
+
+
+								</header>
+								<div class="panel-body">
+									<ul class="to-do-list" id="">
+										<li class="clearfix" style="cursor: pointer;">
+
+											<p class="todo-title">
+												[系统公告]2019年期末考试须知
+											</p>
+
+										</li>
+
+										<li class="clearfix" style="cursor: pointer;">
+
+											<p class="todo-title">
+												[系统公告]2018年期末考试须知
+											</p>
+
+										</li>
+
+										<li class="clearfix" style="cursor: pointer;">
+
+											<p class="todo-title">
+												[系统公告]2017年期末考试须知
+											</p>
+
+										</li>
+									
+
+											<p class="todo-title">
+												查看更多
+											</p>
+
+										
+
+
+									</ul>
+
+								</div>
+
+
+							</div>
+							<!--系统通知结束-->
+						</div>
+
+
+
+
+					</div>
+
+
+
+
+				</div>
+				<!--body wrapper end-->
+
+				<!--footer section start-->
+				<footer>
+					2019 &copy; GDUPT exam system by zrlee
+				</footer>
+				<!--footer section end-->
+
+
+			</div>
+			<!-- main content end-->
+		</section>
+
+		<!-- Placed js at the end of the document so the pages load faster -->
+		<script src="__STATIC__/js/jquery-1.10.2.min.js"></script>
+		<script src="__STATIC__/js/jquery-ui-1.9.2.custom.min.js"></script>
+		<script src="__STATIC__/js/jquery-migrate-1.2.1.min.js"></script>
+		<script src="__STATIC__/js/bootstrap.min.js"></script>
+		<script src="__STATIC__/js/modernizr.min.js"></script>
+		<script src="__STATIC__/js/jquery.nicescroll.js"></script>
+
+		<!--easy pie chart-->
+		<script src="__STATIC__/js/easypiechart/jquery.easypiechart.js"></script>
+		<script src="__STATIC__/js/easypiechart/easypiechart-init.js"></script>
+
+		<!--Sparkline Chart-->
+		<script src="__STATIC__/js/sparkline/jquery.sparkline.js"></script>
+		<script src="__STATIC__/js/sparkline/sparkline-init.js"></script>
+
+		<!--icheck -->
+		<script src="__STATIC__/js/iCheck/jquery.icheck.js"></script>
+		<script src="__STATIC__/js/icheck-init.js"></script>
+
+		<!-- jQuery Flot Chart-->
+		<script src="__STATIC__/js/flot-chart/jquery.flot.js"></script>
+		<script src="__STATIC__/js/flot-chart/jquery.flot.tooltip.js"></script>
+		<script src="__STATIC__/js/flot-chart/jquery.flot.resize.js"></script>
+
+
+		<!--Morris Chart-->
+		<script src="__STATIC__/js/morris-chart/morris.js"></script>
+		<script src="__STATIC__/js/morris-chart/raphael-min.js"></script>
+
+		<!--Calendar-->
+		<script src="__STATIC__/js/calendar/clndr.js"></script>
+		<script src="__STATIC__/js/calendar/evnt.calendar.init.js"></script>
+		<script src="__STATIC__/js/calendar/moment-2.2.1.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+
+		<!--common scripts for all pages-->
+		<script src="__STATIC__/js/scripts.js"></script>
+
+		<!--Dashboard Charts-->
+		<script src="__STATIC__/js/dashboard-chart-init.js"></script>
+
+
+	</body>
+</html>
