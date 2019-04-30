@@ -31,33 +31,38 @@ class Login extends Controller
 
            $data = input() ;
            // 查询用户
-           if ($data['user_type'] == 1){
-               $user_name = $data['user_name'] ;
-               $password = $data['password'] ;
-               if ($user_name && $password) {
+
+           $user_name = $data['user_name'] ;
+           $password = $data['password'] ;
+           if ($user_name && $password) {
 
 
-                   // 按照用户查找
-                   $user = \app\admin\model\User::where('user_name', $user_name)->find() ;
-                   if ($user){
-                       // 对比密码
-                       if ($user['password'] == crypt($password, 'exam')){
-                           Session::delete('user') ;
-                           // 保存session
-                           session('user', $user) ;
-                           $rbacObj = new Rbac();
-                           $rbacObj->cachePermission($user['id']) ;
+               // 按照用户查找
+               $user = \app\admin\model\User::where('user_name', $user_name)->find() ;
+               if ($user){
+                   // 对比密码
+                   if ($user['password'] == crypt($password, 'exam')){
+                       Session::delete('user') ;
+                       // 保存session
+                       session('user', $user) ;
+                       $rbacObj = new Rbac();
+                       $rbacObj->cachePermission($user['id']) ;
+                       if ($user['user_type'] != 3){
                            $this->success('登录成功', url('/admin'), '', '1') ;
                        }else{
-                           $this->error('用户名或者密码错误', url('/login'), '', '1') ;
+                           $this->success('登录成功', url('/'), '', '1') ;
                        }
 
+                   }else{
+                       $this->error('用户名或者密码错误', url('/login'), '', '1') ;
                    }
-               }
 
+               }
            }
 
        }
+
+
 
 
     }

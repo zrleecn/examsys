@@ -49,15 +49,22 @@ class Index extends Controller
 
         $user = session('user') ;
 
+        $count = $this->indexCount() ;
+
         $id = session('user')['id'] ;
         if (!$user){
             $this->error('请先登录', url('/login'), '', '1') ;
         }
 
+        $news = \app\admin\model\News::order('post_time')->select() ;
+
         $menus = MenuTools::get_all_menus() ;
 
         return view('index',[
             'menus' => $menus,
+            'user' => $user,
+            'news' => $news,
+            'count' => $count
         ]);
 
     }
@@ -132,5 +139,33 @@ class Index extends Controller
     public function delete($id)
     {
         //
+    }
+
+
+
+    /**
+     * 首页数据统计信息
+     */
+    public function indexCount(){
+        if (!cache('indexCount')) {
+            $count['student'] = \app\admin\model\User::where('user_type',3)->count() ;
+
+            // 题库数量
+            $count['db'] = \app\admin\model\QuestionDb::count() ;
+            //题目数量
+            $count['question'] = \app\admin\model\Question::count() ;
+            // 单选题
+            $count['dx'] = \app\admin\model\Question::where('type' ,1)->count() ;
+            // 填空题
+            $count['tk'] = \app\admin\model\Question::where('type' ,4)->count() ;
+            // 判断题
+            $count['pd'] = \app\admin\model\Question::where('type' ,3)->count() ;
+            // 简答题
+            $count['jd'] = \app\admin\model\Question::where('type' ,5)->count() ;
+            cache('indexCount', $count) ;
+        }
+
+        return cache('indexCount') ;
+
     }
 }

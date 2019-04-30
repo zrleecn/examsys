@@ -4,11 +4,31 @@ namespace app\admin\controller;
 
 use menu\MenuTools;
 use rbacm\RBACTools;
+use think\App;
 use think\Controller;
 use think\Request;
 
 class Classz extends Controller
 {
+
+
+   public function __construct(App $app = null)
+   {
+       parent::__construct($app);
+       // 判断权限
+       if (!RBACTools::can('/admin/login')){
+
+           $user = session('user') ;
+           if ($user['user_type'] == 3) {
+               return $this->error('访问出错了，请联系管理员', url('/'), '', '2' ) ;
+           }else{
+               return $this->error('访问出错了，请联系管理员', url('/admin'), '', '2' ) ;
+           }
+
+
+       }
+   }
+
     /**
      * 显示资源列表
      *

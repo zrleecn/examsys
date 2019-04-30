@@ -180,128 +180,123 @@
 	</div>
 	<!-- header section end-->
 
+
 	<!-- page heading start-->
 	<div class="page-heading">
 		<h3>
-			院系新增
+			试卷分类
+
 		</h3>
+
 		<ul class="breadcrumb">
 			<li>
 				<a href="#">首页</a>
 			</li>
 			<li>
-				<a href="#">试卷管理</a>
+				<a href="#">题库管理</a>
 			</li>
-			<li class="active">试卷分类修改</li>
+			<li class="active"> 试卷分类</li>
 		</ul>
 	</div>
 	<!-- page heading end-->
-	<hr />
-
-
-
-
-
 
 	<!--body wrapper start-->
 	<div class="wrapper">
 		<div class="row">
-			<div class="col-md-12">
-				<div class="square-widget">
-					<div class="widget-container">
-						<div class="stepy-tab">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading">
+						试院系管理，您可以在如下列表中选择进行修改或删除。
+						<!--<span class="tools pull-right">-->
+						<!--<a href="javascript:;" class="fa fa-chevron-down"></a>-->
+						<!--<a href="javascript:;" class="fa fa-times"></a>-->
+						<!--</span>-->
+						<br>
+						<br>
+						<a href="__HOME__/teacher/create" class="btn btn-success"> 新增教师</a>
+					</header>
+					<div class="panel-body">
+						<div class="adv-table">
+							<table class="table table-bordered table-striped">
+								<thead>
+								<tr>
+									<th>用户名</th>
+									<th>真实名字</th>
+									<!--<th>用户状态</th>-->
+									<th>注册时间</th>
+									<!--<th>最后登录时间</th>-->
+
+									<th>操作</th>
+								</tr>
+								</thead>
+								<tbody>
+								{volist name='list' id='vo'}
+								<tr class="gradeX" style="vertical-align: middle;">
+
+									<td>
+										{$vo.user_name}
+									</td>
+									<td>{$vo.real_name}</td>
+									<!--<td>{if $vo.status==1} 正常 {else} 关闭{/if}</td>-->
+									<td>{:date('Y-m-d H:i:s',$vo.create_time)}</td>
+									<!--<td>{:date('Y-m-d H:i:s',$vo.last_login_time)}</td>-->
+
+
+
+									<td>
+										<a href="__HOME__/teacher/{$vo.id}/edit">
+											<div class="btn btn-success">
+												修改
+											</div>
+										</a>
+
+										<form style="display: inline-block" action="__HOME__/teacher/{$vo.id}" method="post">
+											<input type="hidden" name="_method" value="DELETE" >
+											<input class="btn btn-danger" value="删除" type="submit">
+
+
+										</form>
+									</td>
+								</tr>
+								{/volist}
+								</tbody>
+
+
+							</table>
 						</div>
-						<form id="default" class="form-horizontal" method="post" action="__HOME__/dept">
-							<fieldset title="试卷分类修改">
-								<legend></legend>
-								<div class="form-group">
-									<label class="col-md-2 col-sm-2 control-label">院系名称</label>
-									<div class="col-md-6 col-sm-6">
-										<input type="text" placeholder="院系名称" required="required" name="name" class="form-control">
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-md-2 col-sm-2 control-label">院系说明</label>
-									<div class="col-md-6 col-sm-6">
-										<input type="text" name="remark" required="required" placeholder="分类说明" class="form-control">
-									</div>
-								</div>
-
-
-								<div class="form-group">
-									<label class="col-md-2 col-sm-2 control-label">&nbsp;</label>
-									<div class="col-md-6 col-sm-6">
-										<input type="submit" class="btn btn-success btn-lg" value="提交" style="width: 80px;">
-									</div>
-								</div>
-
-
-							</fieldset>
-
-
-						</form>
 					</div>
-				</div>
+
+
+					<!--分页开始-->
+					<div class="panel-body">
+						<section id="page">
+
+							<div class="my-page pull-right">
+								{$list|raw}
+							</div>
+
+
+						</section>
+					</div>
+					<!--分页结束-->
+				</section>
 			</div>
+
 		</div>
 
 	</div>
+
+
+
 	<!--body wrapper end-->
 
 	<!--footer section start-->
-	<footer class="sticky-footer">
-		2019 &copy; AdminEx by ThemeBucket
+	<footer>
+		2014 &copy; AdminEx by ThemeBucket
 	</footer>
 	<!--footer section end-->
 
-	<script charset="utf-8" src="__STATIC__/js/jquery-1.10.2.min.js"></script>
-
-
-	<script>
-        $(function(){
-
-            $('input[name="name"]').blur(function(){
-                var name = $(this).val() ;
-                if (name.length > 0){
-
-                    const clz = name.replace(/\-/g,"_")
-
-
-
-                    $.get('__HOME__/api/dept/check/'+ clz, function (data){
-                        if (data == 1){
-
-
-                            $('#myModal').modal('show') ;
-                        }
-                    })
-                }
-            })
-        })
-	</script>
-
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">提示信息</h4>
-				</div>
-				<div class="modal-body">
-					院系已经存在了！
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-
 
 </div>
-<!-- main content end-->>
+<!-- main content end-->
 {/block}

@@ -344,7 +344,7 @@
 
 											<p style="margin-left: 30px;"><span style="font-weight: bold;">用户答案</span> ：{$exam_data[$qsn.id]['ukey']} </p>
 											<p style="margin-left: 30px;"><span style="font-weight: bold;">参考答案</span> ：{$qsn.key}</p>
-											<p style="margin-left: 30px;">解析：{$qsn.data.resolve}</p>
+											<p style="margin-left: 30px;">解析：{$qsn.data.resolve|raw}</p>
 
 
 
@@ -400,7 +400,7 @@
 
 								<p style="margin-left: 30px;"><span style="font-weight: bold;">用户答案</span> ：{$exam_data[$qsn.id]['ukey']} </p>
 								<p style="margin-left: 30px;"><span style="font-weight: bold;">参考答案</span> ：{$qsn.key}</p>
-								<p style="margin-left: 30px;">解析：{$qsn.data.resolve}</p>
+								<p style="margin-left: 30px;">解析：{$qsn.data.resolve|raw}</p>
 
 								{/if}
 
@@ -423,7 +423,7 @@
 								{if $qsn.type==5}
 
 								<p style="margin-left: 30px;">用户答案：{$exam_data[$qsn.id]['ukey']}</p>
-								<p style="margin-left: 30px;">参考答案：{$qsn.key}</p>
+								<p style="margin-left: 30px;">参考答案：{$qsn.key|raw}</p>
 
 
 
@@ -672,7 +672,7 @@
 										<ul class="item-list">
 
 											{volist name='vo.questions' id='qsn' key='qindex'}
-
+											{if $qindex%8 == 0}<br>{/if}
 											<li class="selection-item {if $qsn.key == $exam_data[$qsn.id]['ukey']}green{else}red{/if}"><a href="#{$qsn.id}">{$qindex}</a></li>
 
 											{/volist}

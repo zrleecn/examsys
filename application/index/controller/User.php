@@ -97,7 +97,10 @@ class User extends Controller
     {
         //
 
+
         $data = input('put.') ;
+
+
         if ($data){
             $model = new \app\admin\model\User() ;
             $flag = $model->allowField(true)->save($data, ['id'=>$id]);

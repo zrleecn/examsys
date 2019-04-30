@@ -337,7 +337,7 @@
 						</tr>
 						<tr>
 							<td width="15%">选项设置</td>
-							<td>单选题</td>
+							<td class="item-setting"></td>
 						</tr>
 
 						<tr>
@@ -373,6 +373,24 @@
 					switch (res.type) {
 						case 1:
 						    $('.type').html('单选题') ;
+						    var items = JSON.parse(res.data) ;
+						    console.log(items)
+
+						    var itemStr = "A、" + items['item'][0] + "<br> B、" + items['item'][1] + "<br>C、" + items['item'][2] +  "<br>D、" + items['item'][3]
+							$('.item-setting').html(itemStr)
+						    break;
+						case 2:
+                            $('.type').html('多选题') ;
+                            break;
+                        case 3:
+                            $('.type').html('判断题') ;
+                            break;
+                        case 4:
+                            $('.type').html('填空题') ;
+                            break;
+                        case 5:
+                            $('.type').html('简答题') ;
+                            break;
                     }
                     // 设置试题难度
 					switch (res.level) {

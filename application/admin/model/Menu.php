@@ -2,6 +2,7 @@
 
 namespace app\admin\model;
 
+use rbacm\RBACTools;
 use think\Model;
 
 class Menu extends Model
@@ -24,12 +25,23 @@ class Menu extends Model
 
         $data = Menu::where('pid', $pid)->select() ;
 
+        $user = session('user') ;
+        if (!$user){
+            return ;
+        }
+
+
+
+
 
         foreach ( $data as $k=>$v){
             $data[$k]['child'] = [] ;
             // 获取子菜单
             $data[$k]['child'] = $this->get_all_menu($v['id']) ;
         }
+
+
+
 
         return $data ;
     }

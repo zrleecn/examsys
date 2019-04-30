@@ -362,10 +362,10 @@ class Paper extends Controller
         unset($data['page']) ;
         $res = [] ;
         if ($data){
-            $questions = \app\admin\model\Question::where($data)->limit(($page-1)*9 , 9)->select() ;
+            $questions = \app\admin\model\Question::where('status',1)->where($data)->limit(($page-1)*9 , 9)->select() ;
 
             // 总条数
-            $count = \app\admin\model\Question::where($data)->count() ;
+            $count = \app\admin\model\Question::where('status',1)->where($data)->count() ;
             if (count($questions)>0){
                 $res['status'] = 200 ;
                 $res['data'] = $questions ;
@@ -376,7 +376,7 @@ class Paper extends Controller
             }
         }else{
             // 没有筛选参数 直接查询
-            $questions = \app\admin\model\Question::limit(($page-1)*9 , 9)->select() ;
+            $questions = \app\admin\model\Question::where('status',1)->limit(($page-1)*9 , 9)->select() ;
 
             $count = \app\admin\model\Question::count() ;
             if (count($questions)>0){
@@ -509,6 +509,81 @@ class Paper extends Controller
             'examInfo' => $exam_data
         ]) ;
 
+
+
+    }
+
+
+    /**
+     * 试卷预览
+     */
+    public function preview($id){
+
+        $menus = MenuTools::get_all_menus() ;
+        // 判断权限
+        if (!RBACTools::can('/paper/preview')){
+
+            $user = session('user') ;
+            if ($user['user_type'] == 3) {
+                return $this->error('您不具备该权限，请联系管理员', url('/'), '', '2' ) ;
+            }else{
+                return $this->error('您不具备该权限，请联系管理员', url('/admin'), '', '2' ) ;
+            }
+
+
+        }
+
+        $user = session('user') ;
+        $user_id = session('user')['id'] ;
+
+        // 读取试卷信息
+        $paper = \app\admin\model\Paper::where('id', $id)->find() ;
+
+
+        if (!$paper){
+            return ;
+        }
+
+        // 查询使用班级
+        $class_id = $paper['class_id'] ;
+        $classes = \app\admin\model\Classz::where('id', 'in' , explode(',' , $class_id))->select() ;
+
+        $classes_str = "" ;
+        foreach ($classes as $clz){
+            $classes_str .= $clz['name'] . ',' ;
+        }
+        $classes_str = rtrim($classes_str, ',') ;
+
+
+        $paper_data = json_decode( $paper['data'], true) ;
+
+        if (isset($paper_data['sessions'])){
+            // 把题目json data转成数组
+            foreach ($paper_data['sessions'] as $k=>$session){
+
+                foreach ($session['questions'] as $j=>$qsn){
+                    $paper_data['sessions'][$k]['questions'][$j]['data']  =
+                        json_decode( $paper_data['sessions'][$k]['questions'][$j]['data'] , true);
+
+
+                }
+
+            }
+        }
+
+
+        return view('preview',[
+            'id' => $user_id,
+            'paper' => $paper,
+            'classes' => $classes_str,
+
+            'menus' => $menus,
+            'user' => $user,
+            'paper_data' => $paper_data,
+
+
+
+        ]) ;
 
 
     }

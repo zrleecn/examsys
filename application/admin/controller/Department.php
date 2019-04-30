@@ -232,7 +232,7 @@ class Department extends Controller
 
 
         }
-        $clz = \app\admin\model\Classz::where("deptno", $id) ;
+        $clz = \app\admin\model\Classz::where("deptno", $id)->select() ;
 
         if (count($clz)>0) {
 

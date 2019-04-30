@@ -30,6 +30,9 @@ Route::resource('dept', 'admin/Department')->middleware('Login');
 Route::resource('clz', 'admin/Classz')->middleware('Login');
 // 用户管理资源路由
 Route::resource('user', 'admin/User')->middleware('Login');
+// 教师管理资源路由
+Route::resource('teacher', 'admin/Teacher')->middleware('Login');
+
 // 试卷资源路由
 Route::resource('paper', 'admin/Paper')->middleware('Login');
 // 专业管理资源路由
@@ -58,6 +61,8 @@ Route::rule('exam', 'index/Exam/index')->middleware('Login');
 
 Route::rule('config/paper/:id','admin/Paper/config');
 Route::rule('detail/paper/:id','admin/Paper/detail');
+// 试卷预览
+Route::rule('/paper/preview/:id','admin/Paper/preview');
 Route::rule('api/paper/find','admin/Paper/find');
 Route::post('api/paper/store','admin/Paper/store');
 

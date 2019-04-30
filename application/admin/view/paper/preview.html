@@ -216,7 +216,6 @@
 							<div class="subject text-left" style="font-size: 18px;">
 								<div class="col-md-3">科目:{$paper.name}</div>
 								<div class="col-md-3">命题教师:{$paper.poster}</div>
-
 								<div class="col-md-3">使用班级:{$classes}</div>
 								<span></span>
 							</div>
@@ -237,29 +236,32 @@
 					</div>
 					<!--试卷信息结束-->
 
+
+
 					<script src="__STATIC__/js/jquery-1.10.2.min.js"></script>
 
 					<!--填空题替换-->
 					<script>
-						$(function(){
-						    obj = $('.tk')
-							for (let i=0 ; i< obj.length; i++){
-							    newObj = $(obj[i]) ;
+                        $(function(){
+                            obj = $('.tk')
+                            for (let i=0 ; i< obj.length; i++){
+                                newObj = $(obj[i]) ;
 
-							    let qsn_id = newObj.data('id')
-                                str = newObj.html().replace(/\[\]/g, `<input type="text" name="`+qsn_id+`[ukey][]">`)
+                                let qsn_id = newObj.data('id')
+                                str = newObj.html().replace(/\[\]/g, `<input type="text"  name="`+qsn_id+`[ukey][]">`)
                                 newObj.html(str)
 
-							}
-						})
+                            }
+                        })
 					</script>
+
+
+
 
 					<div class="row">
 						<div class="col-md-12">
-							<!--左边题目开始-->
-							<form action="__HOME__/exam/submit" method="post">
-								<input type="hidden" name="id" value="{$paper.id}">
 							<div class="panel col-md-8 question-panel">
+
 
 								{volist name='paper_data.sessions' id='vo' }
 
@@ -283,12 +285,16 @@
 										<p class="exam-title">
 
 										<div class="pull-left" style="font-weight: bold;">
-											{$index} . {$qsn.name}
+										{$index} . {$qsn.name}
 											<input type="hidden" name="{$qsn.id}[score]" value="{$qsn.score}">
 										</div>
 
 
 									</div>
+
+
+
+
 
 								</div>
 								{else}
@@ -301,8 +307,23 @@
 
 										<div class="pull-left tk" data-id="{$qsn.id}">
 											{$index} . {$qsn.name}
-										<input type="hidden" name="{$qsn.id}[score]" value="{$qsn.score}">
+											<input type="hidden" name="{$qsn.id}[score]" value="{$qsn.score}">
 										</div>
+
+
+
+											<p>&nbsp;</p>
+
+
+											<p style="margin-left: 30px;"><span style="font-weight: bold;">参考答案</span> ：{$qsn.key}</p>
+											<p style="margin-left: 30px;">解析：{$qsn.data.resolve|raw}</p>
+
+
+
+
+
+
+
 
 
 										</p>
@@ -321,12 +342,21 @@
 								{volist name='qsn.data.item' id='item' key='aindex'}
 								<p class="exam-selection" style="margin-left: 30px;">
 									<input type="radio" name="{$qsn.id}[ukey]" value="{if $aindex==1}A{elseif $aindex==2}B{elseif $aindex==3}C{elseif $aindex==4}D{/if}"
-																 id="{$qsn.id}{if $aindex==1}A{elseif $aindex==2}B{elseif $aindex==3}C{elseif $aindex==4}D{/if}" />
+										   id="{$qsn.id}{if $aindex==1}A{elseif $aindex==2}B{elseif $aindex==3}C{elseif $aindex==4}D{/if}" />
 									<label style="font-weight: normal" for="{$qsn.id}{if $aindex==1}A{elseif $aindex==2}B{elseif $aindex==3}C{elseif $aindex==4}D{/if}">{if $aindex==1}A{elseif $aindex==2}B{elseif $aindex==3}C{elseif $aindex==4}D{/if} 、 {$item}</label>
+
+
 								</p>
 
 
+
+
 								{/volist}
+
+
+								<p style="margin-left: 30px;"><span style="font-weight: bold;">参考答案</span> ：{$qsn.key}</p>
+								<p style="margin-left: 30px;">解析：{$qsn.data.resolve|raw}</p>
+
 								{/if}
 
 								<!--判断题-->
@@ -334,8 +364,9 @@
 								{if $qsn.type==3}
 
 								<p style="margin-left: 30px;">
-									<input type="radio" name="{$qsn.id}[ukey]" value="Y" id="{$qsn.id}1"> <label style="font-weight: normal" for="{$qsn.id}1">正确</label> <br>
+									<input type="radio" name="{$qsn.id}[ukey]" value="Y" id="{$qsn.id}1"> <label style="font-weight: normal"  for="{$qsn.id}1">正确</label><br>
 									<input type="radio" name="{$qsn.id}[ukey]" value="N" id="{$qsn.id}2"> <label style="font-weight: normal"  for="{$qsn.id}2">错误</label>
+								<p style="margin-left: 30px;"><span style="font-weight: bold;">参考答案</span> ：{$qsn.key}</p>
 								</p>
 
 
@@ -344,10 +375,13 @@
 
 								<!-- 简答题-->
 
+
 								{if $qsn.type==5}
-								<div class="">
-									<textarea rows="8" cols="80" class="text-left form-control" name="{$qsn.id}[ukey]">input here</textarea>
-								</div>
+
+								<p style="margin-left: 30px;">参考答案：{$qsn.key|raw}</p>
+
+
+
 
 
 								{/if}
@@ -356,7 +390,6 @@
 								{/volist}
 
 								{/volist}
-
 
 
 
@@ -372,23 +405,121 @@
 										<!--<div class="pull-left" style="font-weight: bold;" id="q-1-1">-->
 											<!--1.下面哪些是Thread类的方法（）-->
 										<!--</div>-->
-
+										<!--<div class="pull-right">-->
+											<!--&lt;!&ndash; 答对的 &ndash;&gt;-->
+											<!--<i class="fa fa-check  fa-lg" style="color: green;"></i>-->
+											<!--<span class="badge">2</span>-->
+										<!--</div>-->
 
 										<!--</p>-->
 										<!--<br>-->
 
-										<!--<p class="exam-selection"><input type="radio" name="q-1-1" id="" value="" />A. start() </p>-->
-										<!--<p class="exam-selection"><input type="radio" name="q-1-1" id="" value="" />B. run() </p>-->
-										<!--<p class="exam-selection"><input type="radio" name="q-1-1" id="" value="" />C. exit()</p>-->
-										<!--<p class="exam-selection"><input type="radio" name="q-1-1" id="" value="" />D. getPriority()</p>-->
+										<!--<p class="exam-selection">A. start() </p>-->
+										<!--<p class="exam-selection">B. run() </p>-->
+										<!--<p class="exam-selection">C. exit()</p>-->
+										<!--<p class="exam-selection">D. getPriority()</p>-->
+										<!--<p><span style="font-weight: bold;">参考答案</span> ：C</p>-->
+										<!--<p><span style="font-weight: bold;">用户答案</span> ：C</p>-->
+										<!--<p>解析：exit()是System类的方法，如System.exit(0)</p>-->
+
+
+									<!--</div>-->
+
+
+									<!--<br>-->
+									<!--<div class="item-li">-->
+										<!--<p class="exam-title">-->
+
+										<!--<div class="pull-left" style="font-weight: bold;" id="q-1-2">-->
+											<!--2.下列属于关系型数据库的是（）-->
+										<!--</div>-->
+										<!--<div class="pull-right">-->
+											<!--<i class="fa fa-check text-success fa-lg"></i>-->
+											<!--<span class="badge">2</span>-->
+										<!--</div>-->
+
+										<!--</p>-->
+										<!--<br>-->
+										<!--<p class="exam-selection">A. Oracle </p>-->
+										<!--<p class="exam-selection">B. Redis </p>-->
+										<!--<p class="exam-selection">C. IMS</p>-->
+										<!--<p class="exam-selection">D. MongoDB</p>-->
+										<!--<p>参考答案：A</p>-->
+										<!--<p>用户答案：A</p>-->
+										<!--<p>解析：IMS（Information Management System ）数据库是IBM公司开发的两种数据库类型之一;-->
+
+											<!--一种是关系数据库，典型代表产品：DB2；-->
+
+											<!--另一种则是层次数据库，代表产品：IMS层次数据库。-->
+
+											<!--非关系型数据库有MongoDB、memcachedb、Redis等。</p>-->
+
+									<!--</div>-->
+
+									<!--<br>-->
+									<!--<div class="item-li">-->
+										<!--<p class="exam-title">-->
+
+										<!--<div class="pull-left" style="font-weight: bold;" id="q-1-3">-->
+											<!--3.下面哪个流类属于面向字符的输入流（）-->
+										<!--</div>-->
+										<!--<div class="pull-right">-->
+											<!--<i class="fa fa-times  fa-lg" style="color: red;"></i>-->
+											<!--<span class="badge">0</span>-->
+										<!--</div>-->
+
+										<!--</p>-->
+										<!--<br>-->
+										<!--<p class="exam-selection">A. BufferedWriter </p>-->
+										<!--<p class="exam-selection">B. FileInputStream </p>-->
+										<!--<p class="exam-selection">C. ObjectInputStream</p>-->
+										<!--<p class="exam-selection">D. InputStreamReader</p>-->
+										<!--<p>参考答案：D</p>-->
+										<!--<p>用户答案：A</p>-->
+										<!--<p>解析：Java的IO操作中有面向字节(Byte)和面向字符(Character)两种方式。-->
+											<!--面向字节的操作为以8位为单位对二进制的数据进行操作，对数据不进行转换，这些类都是InputStream和OutputStream的子类。-->
+											<!--面向字符的操作为以字符为单位对数据进行操作，在读的时候将二进制数据转为字符，在写的时候将字符转为二进制数据，这些类都是Reader和Writer的子类。</p>-->
 
 									<!--</div>-->
 
 								<!--</div>-->
-								<!-- 选择题结束 -->
+								<!--&lt;!&ndash; 多选开始 &ndash;&gt;-->
+								<!--<div class="">-->
+									<!--<p class="h4">二、多项选择题(每小题2分，共20分)</p>-->
+								<!--</div>-->
 
 
-								<!-- 填空开始 -->
+								<!--<div class="panel-body">-->
+									<!--<div class="item-li">-->
+										<!--<p class="exam-title">-->
+
+										<!--<div class="pull-left" style="font-weight: bold;" id="q-1-1">-->
+											<!--1.下面哪些是Thread类的方法（）-->
+										<!--</div>-->
+										<!--<div class="pull-right">-->
+											<!--&lt;!&ndash; 答对的 &ndash;&gt;-->
+											<!--<i class="fa fa-check  fa-lg" style="color: green;"></i>-->
+											<!--<span class="badge">2</span>-->
+										<!--</div>-->
+
+										<!--</p>-->
+										<!--<br>-->
+
+										<!--<p class="exam-selection">A. start() </p>-->
+										<!--<p class="exam-selection">B. run() </p>-->
+										<!--<p class="exam-selection">C. exit()</p>-->
+										<!--<p class="exam-selection">D. getPriority()</p>-->
+										<!--<p><span style="font-weight: bold;">参考答案</span>：C</p>-->
+										<!--<p><span style="font-weight: bold;">用户答案</span>：C</p>-->
+										<!--<p>解析：exit()是System类的方法，如System.exit(0)</p>-->
+
+
+									<!--</div>-->
+								<!--</div>-->
+								<!--&lt;!&ndash; 多选结束 &ndash;&gt;-->
+
+
+								<!--&lt;!&ndash; 填空开始 &ndash;&gt;-->
 								<!--<div class="">-->
 									<!--<p class="h4">二、填空题(每小题2分，共20分)</p>-->
 								<!--</div>-->
@@ -398,24 +529,29 @@
 									<!--<div class="item-li">-->
 										<!--<p class="exam-title">-->
 
-										<!--<div class="pull-left" id="q-1-1">-->
-											<!--1.在火场中，充满了各种各样的危险：烈焰、高温、烟雾、毒气等。自我保护措施是用湿毛巾捂住 <input type="text" name="" id="" value="" />，必要时 <input-->
-												<!--type="text" name="" id="" value="" /> 前行-->
+										<!--<div class="pull-left" style="font-weight: bold;" id="q-1-1">-->
+											<!--1.在火场中，充满了各种各样的危险：烈焰、高温、烟雾、毒气等。自我保护措施是用湿毛巾捂住 ________ ，必要时 ________ 前行-->
 										<!--</div>-->
-
+										<!--<div class="pull-right">-->
+											<!--&lt;!&ndash; 答对的 &ndash;&gt;-->
+											<!--<i class="fa fa-times  fa-lg" style="color: red;"></i>-->
+											<!--<span class="badge">0</span>-->
+										<!--</div>-->
 
 										<!--</p>-->
 										<!--<br>-->
 										<!--<br>-->
-
+										<!--<p>参考答案：口鼻 匍匐</p>-->
+										<!--<p>用户答案：鼻子 有序</p>-->
+										<!--<p>解析：</p>-->
 
 
 									<!--</div>-->
 								<!--</div>-->
-								<!-- 填空结束 -->
+								<!--&lt;!&ndash; 填空结束 &ndash;&gt;-->
 
 
-								<!-- 判断开始 -->
+								<!--&lt;!&ndash; 判断开始 &ndash;&gt;-->
 								<!--<div class="">-->
 									<!--<p class="h4">四、判断题(每小题2分，共20分)</p>-->
 								<!--</div>-->
@@ -437,16 +573,16 @@
 										<!--</p>-->
 										<!--<br>-->
 										<!--<br>-->
-										<!--<p> <input type="radio" name="" id="" value="" /> 参考答案：正确</p>-->
-										<!--<p><input type="radio" name="" id="" value="" /> 用户答案：正确</p>-->
-
+										<!--<p>参考答案：正确</p>-->
+										<!--<p>用户答案：正确</p>-->
+										<!--<p>解析：</p>-->
 
 
 									<!--</div>-->
 								<!--</div>-->
-								<!-- 判断结束 -->
+								<!--&lt;!&ndash; 判断结束 &ndash;&gt;-->
 
-								<!-- 简答开始 -->
+								<!--&lt;!&ndash; 简答开始 &ndash;&gt;-->
 								<!--<div class="">-->
 									<!--<p class="h4">四、判断题(每小题2分，共20分)</p>-->
 								<!--</div>-->
@@ -459,29 +595,27 @@
 										<!--<div class="pull-left" style="font-weight: bold;" id="q-1-1">-->
 											<!--1.如何做一名合格的驾驶员？-->
 										<!--</div>-->
-
-										<!--<br>-->
-										<!--<div class="">-->
-											<!--<textarea rows="8" cols="80" class="text-left form-control">input here</textarea>-->
+										<!--<div class="pull-right">-->
+											<!--&lt;!&ndash; 答对的 &ndash;&gt;-->
+											<!--<i class="fa fa-check  fa-lg" style="color: green;"></i>-->
+											<!--<span class="badge">1</span>-->
 										<!--</div>-->
 
 										<!--</p>-->
+										<!--<br>-->
+										<!--<br>-->
+										<!--<p>参考答案： 首先要有法治观念、要有熟练的驾驶技术并对自己驾驶的汽车了如指掌、要养成良好的驾驶习惯，文明驾驶、要充分照顾交通弱势群体的利益、要有平和的驾驶心态等等</p>-->
+										<!--<p>用户答案： 首先要有法治观念、要有熟练的驾驶技术并对自己驾驶的汽车了如指掌、要养成良好的驾驶习惯，文明驾驶、要充分照顾交通弱势群体的利益、要有平和的驾驶心态等等</p>-->
+
 
 
 									<!--</div>-->
 								<!--</div>-->
 								<!-- 简答结束 -->
-								<br><br>
-								<input type="submit" value="交卷" class="btn btn-lg btn-success">
 							</div>
 
-
-
-							</form>
-							<!--左边题目结束-->
-
-
 							<!--右边 答题情况-->
+
 							<div class="panel col-md-4 answer-panel">
 								<div class="">
 									<p class="h4">答题情况</p>
@@ -493,9 +627,8 @@
 										<ul class="item-list">
 
 											{volist name='vo.questions' id='qsn' key='qindex'}
-
 											{if $qindex%8 == 0}<br>{/if}
-											<li class="selection-item"><a href="#{$qsn.id}">{$qindex}</a></li>
+											<li class="selection-item "><a href="#{$qsn.id}">{$qindex}</a></li>
 
 											{/volist}
 
@@ -508,38 +641,38 @@
 										<!--<p>选择题</p>-->
 										<!--<ul class="item-list">-->
 
-											<!--<li class="selection-item">1</li>-->
-											<!--<li class="selection-item">2</li>-->
-											<!--<a href="#q-1-3">-->
-												<!--<li class="selection-item">3</li>-->
-											<!--</a>-->
+										<!--<li class="selection-item">1</li>-->
+										<!--<li class="selection-item">2</li>-->
+										<!--<a href="#q-1-3">-->
+										<!--<li class="selection-item">3</li>-->
+										<!--</a>-->
 
-											<!--<li class="selection-item">4</li>-->
+										<!--<li class="selection-item">4</li>-->
 
 										<!--</ul>-->
 
 										<!--<p>判断题</p>-->
 										<!--<ul class="item-list">-->
 
-											<!--<li class="selection-item">1</li>-->
-											<!--<li class="selection-item">2</li>-->
-											<!--<a href="#q-1-3">-->
-												<!--<li class="selection-item">3</li>-->
-											<!--</a>-->
+										<!--<li class="selection-item">1</li>-->
+										<!--<li class="selection-item">2</li>-->
+										<!--<a href="#q-1-3">-->
+										<!--<li class="selection-item">3</li>-->
+										<!--</a>-->
 
-											<!--<li class="selection-item">4</li>-->
+										<!--<li class="selection-item">4</li>-->
 
 										<!--</ul>-->
 										<!--<p>判断题</p>-->
 										<!--<ul class="item-list">-->
 
-											<!--<li class="selection-item">1</li>-->
-											<!--<li class="selection-item">2</li>-->
-											<!--<a href="#q-1-3">-->
-												<!--<li class="selection-item">3</li>-->
-											<!--</a>-->
+										<!--<li class="selection-item">1</li>-->
+										<!--<li class="selection-item">2</li>-->
+										<!--<a href="#q-1-3">-->
+										<!--<li class="selection-item">3</li>-->
+										<!--</a>-->
 
-											<!--<li class="selection-item">4</li>-->
+										<!--<li class="selection-item">4</li>-->
 
 										<!--</ul>-->
 

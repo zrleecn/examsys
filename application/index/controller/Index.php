@@ -5,10 +5,30 @@ use app\admin\model\Examdata;
 use app\admin\model\Paper;
 use gmars\rbac\Rbac;
 use rbacm\RBACTools;
+use think\App;
 use think\Controller;
 
 class Index extends Controller
 {
+
+
+   public function __construct(App $app = null)
+   {
+       parent::__construct($app);
+       // 判断权限
+       if (!RBACTools::can('/index/login')){
+
+           $user = session('user') ;
+           if ($user['user_type'] == 3) {
+               return $this->error('访问出错了，请联系管理员', url('/'), '', '2' ) ;
+           }else{
+               return $this->error('访问出错了，请联系管理员', url('/admin'), '', '2' ) ;
+           }
+
+
+       }
+   }
+
     public function index()
     {
         // 获取个人信息
@@ -122,7 +142,7 @@ class Index extends Controller
     public function createUser(){
         $rbacObj = new Rbac();
         $data = [
-            'user_name' => 'teacher',
+            'user_name' => 'teacher222',
             'status' => 1,
             'password' =>crypt("zrlee.cn", 'exam'),
             'user_type' => 2
@@ -139,13 +159,31 @@ class Index extends Controller
 
         $rbacObj = new Rbac();
         $data = [
-            ['name' => '前台登录',
+
+            ['name' => '教师编辑',
                 'status' => 1,
-                'description' => '前台登录权限',
-                'path' => '/index/login',
+                'description' => '学生编辑权限',
+                'path' => '/teacher/edit',
                 'create_time' => time()
             ],
-
+            ['name' => '教师新增',
+                'status' => 1,
+                'description' => '教师新增权限',
+                'path' => '/teacher/create',
+                'create_time' => time()
+            ],
+            ['name' => '教师删除',
+                'status' => 1,
+                'description' => '教师删除权限',
+                'path' => '/teacher/delete',
+                'create_time' => time()
+            ],
+            ['name' => '教师列表',
+                'status' => 1,
+                'description' => '教师列表权限',
+                'path' => '/teacher',
+                'create_time' => time()
+            ],
 
         ];
 
@@ -178,10 +216,18 @@ class Index extends Controller
     // 组权限
     public function arp(){
         $rbacObj = new Rbac();
-        $rbacObj->assignRolePermission(3, [1,2,3,4,5,6,7,8,15,16,17,18,19,20,21,22,23,24,25]);
+        $rbacObj->assignRolePermission(3, [52, 53,54,55]);
     }
 
     public function check (){
         RBACTools::can('/db/list');
+    }
+
+
+    public function aaa(){
+
+
+        cache('menus' , [1,2,3]) ;
+        dump(cache('menus')) ;
     }
 }

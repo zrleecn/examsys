@@ -163,7 +163,7 @@
 				<li>
 					<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 						<img src="__STATIC__/images/photos/user-avatar.png" alt="" />
-						zrlee
+						{$user.user_name}
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
@@ -220,15 +220,15 @@
 
 							<tr>
 								<td>用户统计</td>
-								<td>正常 : 10 , 待审核 : 0 , 锁定 : 0</td>
+								<td>学生 : {$count.student} </td>
 							</tr>
 							<tr>
 								<td>题库统计</td>
-								<td>题库数量 : 1 , 试题数量 : 45</td>
+								<td>题库数量 : {$count.db} , 试题数量 : {$count.question}</td>
 							</tr>
 							<tr>
 								<td>试题统计</td>
-								<td>单选题 : 10 , 多选题 : 10 , 判断题 : 10 , 填空题 : 10 , 问答题 : 5</td>
+								<td>单选题 : {$count.dx} ,  判断题 : {$count.pd} , 填空题 : {$count.tk} , 问答题 : {$count.jd}</td>
 							</tr>
 							<tr>
 								<td>试卷统计</td>
@@ -250,34 +250,24 @@
 					</header>
 					<div class="panel-body">
 						<ul class="to-do-list" id="">
-							<li class="clearfix" style="cursor: pointer;">
+							{volist name='news' id='new'}
+							<li class="clearfix" style="cursor: pointer;" >
 
+								<a href="__HOME__/news/{$new.id}" style="color: #000000">
 								<p class="todo-title">
-									[系统公告]2019年期末考试须知
+									[{$new.cate.name}]{$new.title}
 								</p>
+								</a>
 
 							</li>
-
-							<li class="clearfix" style="cursor: pointer;">
-
-								<p class="todo-title">
-									[系统公告]2018年期末考试须知
-								</p>
-
-							</li>
-
-							<li class="clearfix" style="cursor: pointer;">
-
-								<p class="todo-title">
-									[系统公告]2017年期末考试须知
-								</p>
-
-							</li>
+							{/volist}
 
 
+							<a href="__HOME__/news" style="color: #000000">
 							<p class="todo-title">
 								查看更多
 							</p>
+							</a>
 
 
 

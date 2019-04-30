@@ -65,7 +65,7 @@ class Question extends Controller
         // 获取试题列表
         $pagesize = \think\facade\Config::get('pagesize');
 
-        $list = \app\admin\model\Question::paginate($pagesize) ;
+        $list = \app\admin\model\Question::where('status',1)->order('createdate','desc')->paginate($pagesize) ;
 
 
 //        $url = \think\facade\Request::baseUrl() ;
@@ -346,7 +346,7 @@ class Question extends Controller
         // 关联查找所在题库信息
         $dbid = $question->dbinfo->id ;
         // 删除题目
-        $flag = \app\admin\model\Question::destroy($id) ;
+        $flag = \app\admin\model\Question::where('id', $id)->update(['status'=> 0 ]) ;
 
         if ($flag){
 

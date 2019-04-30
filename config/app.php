@@ -148,7 +148,7 @@ return [
 
     // 自定义配置项
     // 分页数量
-    'pagesize' => '3'
+    'pagesize' => '10'
 
 
 

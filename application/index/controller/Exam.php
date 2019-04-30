@@ -35,7 +35,7 @@ class Exam extends Controller
         $pagesize = \think\facade\Config::get('pagesize');
 //        $paper = Paper::where('start_date', $date_str)->paginate($pagesize) ;
 //        $paper = Paper::where('start_date', $date_str)->where('class_id','like' , '%' . $class_id . '%')->select();
-        $paper = Paper::where('class_id','like' , '%' . $class_id . '%')->order('start_time_stamp', 'desc')->select();
+        $paper = Paper::where('class_id','like' , '%' . $class_id . '%')->where('status',1)->order('start_time_stamp', 'desc')->select();
 
 
         $my_exam = [] ;

@@ -8,7 +8,7 @@ use rbacm\RBACTools;
 use think\Controller;
 use think\Request;
 
-class User extends Controller
+class Teacher extends Controller
 {
     /**
      * 显示资源列表
@@ -19,10 +19,8 @@ class User extends Controller
     {
         //
 
-
-
         // 判断权限
-        if (!RBACTools::can('/user')){
+        if (!RBACTools::can('/teacher')){
 
             $user = session('user') ;
             if ($user['user_type'] == 3) {
@@ -39,7 +37,7 @@ class User extends Controller
         // 获取试题列表
         $pagesize = \think\facade\Config::get('pagesize');
 
-        $list = \app\admin\model\User::where("user_type", 3)->paginate($pagesize) ;
+        $list = \app\admin\model\User::where("user_type", 2)->paginate($pagesize) ;
 
         return view('index',[
             'menus' => $menus,
@@ -54,8 +52,12 @@ class User extends Controller
      */
     public function create()
     {
+        //
+
+
+
         // 判断权限
-        if (!RBACTools::can('/user/edit')){
+        if (!RBACTools::can('/teacher/create')){
 
             $user = session('user') ;
             if ($user['user_type'] == 3) {
@@ -69,12 +71,9 @@ class User extends Controller
 
         $menus = MenuTools::get_all_menus() ;
 
-        // 班级
-        $clz = \app\admin\model\Classz::where('status', 1) ->select() ;
 
         return view('create',[
             'menus' => $menus,
-            'clz' => $clz
         ]) ;
     }
 
@@ -87,44 +86,49 @@ class User extends Controller
     public function save(Request $request)
     {
         //
+
+
         // 判断权限
-        if (!RBACTools::can('/user/create')){
+        if (!RBACTools::can('/teacher/create')){
 
             $user = session('user') ;
             if ($user['user_type'] == 3) {
-                return $this->error('您不具备该权限，请联系管理员', url('/'), '', '2' ) ;
+                return $this->error('没有该权限，请联系管理员', url('/'), '', '2' ) ;
             }else{
-                return $this->error('您不具备该权限，请联系管理员', url('/admin'), '', '2' ) ;
+                return $this->error('没有该权限，请联系管理员', url('/admin'), '', '2' ) ;
             }
 
 
         }
 
-        $data = input("post.") ;
+        $data = input('put.') ;
 
-        if ($data) {
+        $data['create_time'] = time() ;
+        $data['password'] = crypt($data['password'], 'exam') ;
+        $data['user_type'] = 2 ;
+        $data['status'] = 1 ;
+        $data['id'] = uniqid() ;
+        $rbacObj = new Rbac();
 
-            $data['user_type'] = 3 ;
-            $data['create_time'] = time() ;
-            $data['password'] = crypt($data['password'], 'exam') ;
-            $data['status'] = 1 ;
-            $data['id'] = uniqid() ;
+
+        // 两步操作 最好加上事务回滚 时间上问题 就不加了
+        // 创建用户
+        $flag = $rbacObj->createUser($data) ;
+        if ($flag){
+            // 添加默认用户组
             $rbacObj = new Rbac();
-
-            $flag = $rbacObj->createUser($data) ;
-            if ($flag){
-                // 添加默认用户组
-                $rbacObj = new Rbac();
-                if ($rbacObj->assignUserRole($data['id'], [2])){
-                    return $this->success('注册成功', url('/user'), '', '2' ) ;
-                }
-            }else{
-                return $this->error('注册失败', url('/user'), '', '2' ) ;
-
+            if ($rbacObj->assignUserRole($data['id'], [3])){
+                return $this->success('注册成功', url('/teacher'), '', '2' ) ;
             }
 
+        }else{
+            return $this->error('注册失败', url('/teacher'), '', '2' ) ;
 
         }
+
+
+
+
     }
 
     /**
@@ -139,16 +143,18 @@ class User extends Controller
     }
 
     /**
-     * 显示编辑资源表单页
-     * @param $id
-     * @throws \think\Exception
+     * 显示编辑资源表单页.
+     *
+     * @param  int  $id
+     * @return \think\Response
      */
     public function edit($id)
     {
         //
 
+
         // 判断权限
-        if (!RBACTools::can('/user/edit')){
+        if (!RBACTools::can('/teacher/edit')){
 
             $user = session('user') ;
             if ($user['user_type'] == 3) {
@@ -165,17 +171,12 @@ class User extends Controller
         // 左侧菜单
         $menus = MenuTools::get_all_menus() ;
 
-        // 班级
-        $clz = \app\admin\model\Classz::where('status', 1) ->select() ;
 
         return view('edit',[
             'menus' => $menus,
             'user' => $user,
-            'clz' => $clz
+
         ]) ;
-
-
-
 
 
     }
@@ -190,8 +191,9 @@ class User extends Controller
     public function update(Request $request, $id)
     {
         //
+
         // 判断权限
-        if (!RBACTools::can('/user/edit')){
+        if (!RBACTools::can('/teacher/edit')){
 
             $user = session('user') ;
             if ($user['user_type'] == 3) {
@@ -208,11 +210,11 @@ class User extends Controller
             $dept = new \app\admin\model\User() ;
             $flag = $dept->allowField(true)->save($data, ['id'=>$id]);
             if ($flag){
-                $this->success('更新成功', url('/user'), '', '2' ) ;
+                $this->success('更新成功', url('/teacher'), '', '2' ) ;
                 exit();
             }else{
                 // 可以记录日志
-                $this->error('更新失败', url('/user'), '', '2' ) ;
+                $this->error('更新失败', url('/teacher'), '', '2' ) ;
             }
         }
 
@@ -230,7 +232,7 @@ class User extends Controller
 
 
         // 判断权限
-        if (!RBACTools::can('/user/delete')){
+        if (!RBACTools::can('/teacher/delete')){
 
             $user = session('user') ;
             if ($user['user_type'] == 3) {
@@ -245,21 +247,19 @@ class User extends Controller
         $data = \app\admin\model\User::get($id) ;
 
         if (!$data){
-            $this->error('信息不存在', url('/user'), '', '2' ) ;
+            $this->error('信息不存在', url('/teacher'), '', '2' ) ;
             exit();
         }
 
+        // 删除用户 同时会删除用户的角色
         $rbac = new Rbac() ;
-
-
-        // 删除用户 同时删除角色
-        $flag = $rbac->delUser($id) ;
+        $flag = $rbac->delUser($id) ; ;
         if ($flag){
-            $this->success('删除成功', url('/user'), '', '2' ) ;
+            $this->success('删除成功', url('/teacher'), '', '2' ) ;
             exit();
         }else{
             // 可以记录日志
-            $this->error('删除失败', url('/user'), '', '2' ) ;
+            $this->error('删除失败', url('/teacher'), '', '2' ) ;
 //            \think\facade\Log::write('error') ;
         }
 

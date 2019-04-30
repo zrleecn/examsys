@@ -38,7 +38,7 @@ class QuestionDb extends Controller
         $menus = MenuTools::get_all_menus() ;
 
         // 获取题库列表
-        $list = \app\admin\model\QuestionDb::paginate(5) ;
+        $list = \app\admin\model\QuestionDb::order('createdate', 'desc')->paginate(10) ;
 
         return view('db_list',[
             'menus' => $menus,

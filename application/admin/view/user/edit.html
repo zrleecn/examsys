@@ -10,7 +10,7 @@
 
 {block name="main"}
 <!-- main content start-->
-<div class="main-content">
+<div class="main-content" >
 
 	<!-- header section start-->
 	<div class="header-section">
@@ -181,127 +181,191 @@
 	<!-- header section end-->
 
 	<!-- page heading start-->
-	<div class="page-heading">
-		<h3>
-			院系新增
-		</h3>
-		<ul class="breadcrumb">
-			<li>
-				<a href="#">首页</a>
-			</li>
-			<li>
-				<a href="#">试卷管理</a>
-			</li>
-			<li class="active">试卷分类修改</li>
-		</ul>
-	</div>
+	<!--<div class="page-heading">-->
+	<!--Page Tittle goes here-->
+	<!--</div>-->
 	<!-- page heading end-->
-	<hr />
-
-
-
-
-
 
 	<!--body wrapper start-->
 	<div class="wrapper">
+
+		<form action="__HOME__/user/{$user.id}" method="post">
+			<input type="hidden" name="_method" value="PUT" >
 		<div class="row">
-			<div class="col-md-12">
-				<div class="square-widget">
-					<div class="widget-container">
-						<div class="stepy-tab">
+			<div class="col-md-4">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel">
+							<div class="panel-body">
+								<div class="profile-pic text-center">
+									<img alt="" src="__STATIC__/images/boniu.jpeg">
+								</div>
+							</div>
 						</div>
-						<form id="default" class="form-horizontal" method="post" action="__HOME__/dept">
-							<fieldset title="试卷分类修改">
-								<legend></legend>
-								<div class="form-group">
-									<label class="col-md-2 col-sm-2 control-label">院系名称</label>
-									<div class="col-md-6 col-sm-6">
-										<input type="text" placeholder="院系名称" required="required" name="name" class="form-control">
-									</div>
+					</div>
+					<div class="col-md-12">
+						<div class="panel">
+							<div class="panel-body">
+								<ul class="p-info">
+									<li>
+										<div class="title">登录名</div>
+										<div class="desk"><input type="text" name="user_name" value="{$user.user_name}"  class="form-control"></div>
+									</li>
+									<li>
+										<div class="title">姓名</div>
+										<div class="desk"><input type="text" name="real_name" value="{$user.real_name}" class="form-control"></div>
+									</li>
+
+									<li>
+										<div class="title">性别</div>
+										<div class="desk">
+											<select name="gender" class="form-control">
+
+												<option value="1" {if $user.gender==1}selected {/if} >男</option>
+
+												<option value="2" {if $user.gender==2}selected {/if}>女</option>
+											</select>
+										</div>
+									</li>
+									<li>
+										<div class="title">班级</div>
+										<div class="desk">
+											<select name="class_id" class="form-control">
+												{volist name='clz' id='vo'}
+												<option value="{$vo.id}" {if $user.class_id==$vo.id}selected{/if}>{$vo.name}</option>
+												{/volist}
+											</select>
+										</div>
+									</li>
+									<!--<li>-->
+									<!--<div class="title">学院</div>-->
+									<!--<div class="desk">-->
+									<!--<select name="class_id" class="form-control">-->
+									<!--<option value="1">哈哈哈</option>-->
+									<!--</select>-->
+									<!--</div>-->
+									<!--</li>-->
+									<li>
+										<div class="title">入学年份</div>
+										<div class="desk"><input type="text" name="join_yeas" value="{$user.join_yeas}" class="form-control"></div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel">
+							<div class="panel-body">
+								<div class="profile-desk">
+									<h1>PoNiu Da Yo</h1>
+									<span class="designation">电子信息工程</span>
+
+									<p>
+										电子信息工程是一门应用计算机等现代化技术进行电子信息控制和信息处理的学科，主要研究信息的获取与处理，电子设备与信息系统的设计、开发、应用和集成。
+									</p>
+
 								</div>
-
-								<div class="form-group">
-									<label class="col-md-2 col-sm-2 control-label">院系说明</label>
-									<div class="col-md-6 col-sm-6">
-										<input type="text" name="remark" required="required" placeholder="分类说明" class="form-control">
-									</div>
-								</div>
-
-
-								<div class="form-group">
-									<label class="col-md-2 col-sm-2 control-label">&nbsp;</label>
-									<div class="col-md-6 col-sm-6">
-										<input type="submit" class="btn btn-success btn-lg" value="提交" style="width: 80px;">
-									</div>
-								</div>
-
-
-							</fieldset>
-
-
-						</form>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
+
+			<style>
+				.desk{
+					font-weight: bold;
+				}
+			</style>
+			<div class="col-md-8">
+				<div class="col-md-6">
+					<div class="panel">
+						<div class="panel-body">
+							<ul class="p-info">
+								<li>
+									<div class="title">政治面貌</div>
+									<div class="desk"><input type="text" name="political" value="{$user.political}"  class="form-control"></div>
+								</li>
+								<li>
+									<div class="title">学生状态</div>
+									<div class="desk">
+										<select name="status" id="" class="form-control">
+											<option value="0">unused</option>
+											<option value="1">在读</option>
+											<option value="2">毕业</option>
+										</select>
+									</div>
+								</li>
+								<li>
+									<div class="title">籍贯</div>
+									<div class="desk">
+										<input type="text" name="province" value="{$user.province}" class="form-control">
+									</div>
+								</li>
+								<li>
+									<div class="title">民族</div>
+									<div class="desk"> <input type="text" name="nationality" value="{$user.nationality}"  class="form-control"></div>
+								</li>
+								<li>
+									<div class="title">家庭住址</div>
+									<div class="desk"> <input type="text" name="address"  value="{$user.address}" class="form-control"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="panel">
+						<div class="panel-body">
+							<ul class="p-info">
+								<li>
+									<div class="title">学号</div>
+									<div class="desk"><input type="text" name="student_id" value="{$user.student_id}"  class="form-control"></div>
+								</li>
+								<li>
+									<div class="title">手机号码</div>
+									<div class="desk"><input type="text" name="mobile" value="{$user.mobile}"  class="form-control"></div>
+								</li>
+								<li>
+									<div class="title">电子邮箱</div>
+									<div class="desk"><input type="text" name="email" value="{$user.email}" class="form-control"></div>
+								</li>
+								<li>
+									<div class="title">&nbsp;</div>
+									<div class="desk">&nbsp;</div>
+								</li>
+								<li>
+									<div class="title">&nbsp;</div>
+									<div class="desk">&nbsp;</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
+
+
+			<input type="submit" class="btn btn-success btn-lg">
+
+		</form>
 
 	</div>
 	<!--body wrapper end-->
 
 	<!--footer section start-->
-	<footer class="sticky-footer">
-		2019 &copy; AdminEx by ThemeBucket
+	<footer class="">
+		2014 &copy; AdminEx by ThemeBucket
 	</footer>
 	<!--footer section end-->
 
-	<script charset="utf-8" src="__STATIC__/js/jquery-1.10.2.min.js"></script>
-
-
-	<script>
-        $(function(){
-
-            $('input[name="name"]').blur(function(){
-                var name = $(this).val() ;
-                if (name.length > 0){
-
-                    const clz = name.replace(/\-/g,"_")
-
-
-
-                    $.get('__HOME__/api/dept/check/'+ clz, function (data){
-                        if (data == 1){
-
-
-                            $('#myModal').modal('show') ;
-                        }
-                    })
-                }
-            })
-        })
-	</script>
-
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">提示信息</h4>
-				</div>
-				<div class="modal-body">
-					院系已经存在了！
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-
 
 </div>
-<!-- main content end-->>
+<!-- main content end-->
 {/block}
